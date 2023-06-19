@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Anzen Manager Extension",
+    "description": "Anzen Manager Browser Extension",
+    "version": "1.0",
+    "author": "Riyazur Razak",
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Anzen Manager"
+    },
+    "permissions": ["scripting", "activeTab", "tabs"],
+    "commands": {
+      "_execute_action": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+A",
+          "mac": "Command+A"
+        }
+      }
+    }
+  }
