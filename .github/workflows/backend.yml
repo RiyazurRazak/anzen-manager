@@ -1,7 +1,6 @@
 name: backend deployment to azure 🚀🚀
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
