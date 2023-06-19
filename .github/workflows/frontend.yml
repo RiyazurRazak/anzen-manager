@@ -3,9 +3,10 @@ name: flutter app build 🚀🚀
 on:
   workflow_dispatch:
   push:
-    - main
-  paths:
-    - "./frontend/**"
+    branches:
+      - main
+    paths:
+      - "./frontend/**"
 
 env:
   FLUTTER_VERSION: "3.10.3"
