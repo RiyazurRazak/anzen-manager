@@ -35,7 +35,7 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
-          path: build/app/outputs/apk/release/app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
 
   build_ios:
     name: IOS IPA Build
@@ -51,7 +51,14 @@ jobs:
           channel: "${{env.FLUTTER_CHANNEL}}"
       - run: flutter pub get
       - run: flutter clean
-      - run: flutter build ios --release --no-codesign
+      - run: |
+          flutter build ios --no-codesign
+          cd build/ios/iphoneos
+          mkdir Payload
+          cd Payload
+          ln -s ../Runner.app
+          cd ..
+          zip -r app.ipa Payload
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
