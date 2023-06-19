@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - "./frontend/**"
+      - "frontend/**"
 
 env:
   FLUTTER_VERSION: "3.10.3"
