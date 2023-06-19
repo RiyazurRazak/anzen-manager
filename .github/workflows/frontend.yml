@@ -35,7 +35,7 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: /frontend/build/app/outputs/flutter-apk/app-release.apk
 
   build_ios:
     name: IOS IPA Build
@@ -62,4 +62,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
-          path: build/ios/iphoneos/app.ipa
+          path: /frontend/build/ios/iphoneos/app.ipa
