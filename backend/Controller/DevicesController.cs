@@ -43,6 +43,28 @@ namespace backend.Controllers
           
         }
 
-        
+        [HttpDelete("device/{identifier}")]
+        public IActionResult DeleteDevice(string identifier)
+        {
+            try
+            {
+                var device = _dbContext.Devices.Find(identifier);
+                if(device == null)
+                {
+                    _logger.LogInformation("Device Identifier not found in records");
+                    return NotFound();
+                }
+                _dbContext.Devices.Remove(device);
+                _dbContext.SaveChanges();
+                _logger.LogInformation("Device successfully deleted");
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }
