@@ -1,5 +1,6 @@
 ﻿using backend.Data;
-using Microsoft.AspNetCore.Identity;
+using backend.Dto;
+using backend.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controller
@@ -33,5 +34,29 @@ namespace backend.Controller
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpPost("password}")]
+        public IActionResult AddPassword([FromBody] AddPasswordDto payload)
+        {
+            try
+            {
+                Passwords password = new()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    DeviceId = payload.DeviceId,
+                    Label = payload.Label,
+                    Cypher = payload.Cypher,
+                };
+                _dbContext.Passwords.Add(password);
+                _dbContext.SaveChanges();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
+
     }
 }
