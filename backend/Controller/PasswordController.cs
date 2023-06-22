@@ -24,7 +24,7 @@ namespace backend.Controller
         {
             try
             {
-                var passwords = _dbContext.Passwords.Where(password => password.DeviceId == identifier).Select(password => new {password.Cypher, password.Label});
+                var passwords = _dbContext.Passwords.Where(password => password.DeviceId == identifier).Select(password => new {password.Cypher, password.Label, password.Id});
                 _logger.LogInformation($"Return Cyphers of the device {identifier}");
                 return Ok(passwords);
             }
