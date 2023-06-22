@@ -12,6 +12,8 @@ namespace backend
             builder.Services.AddDbContext<ApplicationDbContext>(options => 
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DB")));
 
+            builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddFile("app.log", append: true));
+
             // Add services to the container.
 
             builder.Services.AddControllers();

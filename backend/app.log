@@ -1,0 +1,16 @@
+2023-06-22T19:57:28.7669045+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-22T19:57:28.7708123+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-22T19:57:28.7865932+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-22T19:57:28.7901016+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-22T19:57:28.7922591+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-22T19:58:24.1593884+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (82ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [d].[Identifier], [d].[Model]
+FROM [Devices] AS [d]
+WHERE [d].[Identifier] = @__p_0
+2023-06-22T19:58:24.3946972+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (13ms) [Parameters=[@p0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Devices]
+OUTPUT 1
+WHERE [Identifier] = @p0;
+2023-06-22T19:58:24.4083311+05:30	INFO	[backend.Controllers.DevicesController]	[0]	Device successfully deleted
