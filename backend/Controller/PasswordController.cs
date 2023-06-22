@@ -82,7 +82,28 @@ namespace backend.Controller
             }
         }
 
-
+        [HttpDelete("password/{id}")]
+        public IActionResult DeletePassword(string id)
+        {
+            try
+            {
+                var password = _dbContext.Passwords.Find(id);
+                if (password == null)
+                {
+                    _logger.LogInformation("Requested password to delete was not found");
+                    return NotFound();
+                }
+                _dbContext.Passwords.Remove(password);
+                _dbContext.SaveChanges();
+                _logger.LogInformation("Password Removed!");
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
 
     }
 }
