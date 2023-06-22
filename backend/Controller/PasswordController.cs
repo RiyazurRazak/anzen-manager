@@ -1,4 +1,5 @@
 ﻿using backend.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controller
@@ -17,5 +18,20 @@ namespace backend.Controller
             _logger = logger;
        }
 
+        [HttpGet("passwords/{identifier}")]
+        public IActionResult GetAllPasswords(string identifier)
+        {
+            try
+            {
+                var passwords = _dbContext.Passwords.Where(password => password.DeviceId == identifier).Select(password => new {password.Cypher, password.Label});
+                _logger.LogInformation($"Return Cyphers of the device {identifier}");
+                return Ok(passwords);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }
