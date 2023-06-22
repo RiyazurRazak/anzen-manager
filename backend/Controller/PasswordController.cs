@@ -58,5 +58,31 @@ namespace backend.Controller
             }
         }
 
+        [HttpPut("password")]
+        public IActionResult UpdatePassword([FromBody] UpdatePasswordDto payload)
+        {
+            try
+            {
+                var password = _dbContext.Passwords.Find(payload.Id);
+                if(password == null)
+                {
+                    _logger.LogInformation("Requested password to update was not found");
+                    return NotFound();
+                }
+                password.Cypher = payload.Cypher;
+                password.Label = payload.Label;
+                _dbContext.SaveChanges();
+                _logger.LogInformation("Password Updated!");
+                return Ok(password);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+
+
     }
 }

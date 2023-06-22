@@ -10,4 +10,11 @@ namespace backend.Dto
 
         public string Label { get; set; }
     }
+
+    public class UpdatePasswordDto
+    {
+        public string Id { get; set; }
+        public string Cypher { get; set; }
+        public string Label { get; set; }
+    }
 }
