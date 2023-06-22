@@ -1,4 +1,6 @@
 ﻿using backend.Data;
+using backend.Dto;
+using backend.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
@@ -17,6 +19,30 @@ namespace backend.Controllers
             _logger = logger;
         }
 
-   
+        [HttpPost("device")]
+        public IActionResult AddDevice([FromBody] AddDeviceDto payload)
+        {
+            try
+            {
+                Devices device = new()
+                {
+                    Identifier = payload.Identifier,
+                    Model = payload.Model
+                };
+                _dbContext.Devices.Add(device);
+                _dbContext.SaveChanges();
+                _logger.LogInformation("New Device added");
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return StatusCode(500, ex.Message);
+            }
+          
+        }
+
+        
     }
 }
