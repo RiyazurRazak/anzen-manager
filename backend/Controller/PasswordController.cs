@@ -35,6 +35,22 @@ namespace backend.Controller
             }
         }
 
+        [HttpGet("password/{id}")]
+        public IActionResult GetPassword(string id)
+        {
+            try
+            {
+                var password = _dbContext.Passwords.Find(id);
+                _logger.LogInformation($"Return cypher of the particular label");
+                return Ok(password);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost("password}")]
         public IActionResult AddPassword([FromBody] AddPasswordDto payload)
         {
