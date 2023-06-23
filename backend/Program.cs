@@ -14,6 +14,8 @@ namespace backend
 
             builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddFile("app.log", append: true));
 
+            builder.Services.AddSignalR();
+
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -36,6 +38,7 @@ namespace backend
 
 
             app.MapControllers();
+            
 
             app.Run();
         }
