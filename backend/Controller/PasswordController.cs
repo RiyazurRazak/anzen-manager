@@ -51,7 +51,7 @@ namespace backend.Controller
             }
         }
 
-        [HttpPost("password}")]
+        [HttpPost("password")]
         public IActionResult AddPassword([FromBody] AddPasswordDto payload)
         {
             try
