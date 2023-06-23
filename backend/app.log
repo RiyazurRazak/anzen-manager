@@ -14,3 +14,93 @@ DELETE FROM [Devices]
 OUTPUT 1
 WHERE [Identifier] = @p0;
 2023-06-22T19:58:24.4083311+05:30	INFO	[backend.Controllers.DevicesController]	[0]	Device successfully deleted
+2023-06-23T11:55:05.1426485+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T11:55:05.1755682+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T11:55:05.2098676+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T11:55:05.2373018+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T11:55:05.2398515+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T11:55:06.2805101+05:30	FAIL	[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware]	[UnhandledException]	An unhandled exception has occurred while executing the request.Microsoft.AspNetCore.Routing.Patterns.RoutePatternException: There is an incomplete parameter in the route template. Check that each '{' character has a matching '}' character.
+   at Microsoft.AspNetCore.Routing.Patterns.RoutePatternParser.Parse(String pattern)
+   at Microsoft.AspNetCore.Routing.Patterns.RoutePatternFactory.Parse(String pattern)
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointFactory.AddEndpoints(List`1 endpoints, HashSet`1 routeNames, ActionDescriptor action, IReadOnlyList`1 routes, IReadOnlyList`1 conventions, Boolean createInertEndpoints)
+   at Microsoft.AspNetCore.Mvc.Routing.ControllerActionEndpointDataSource.CreateEndpoints(IReadOnlyList`1 actions, IReadOnlyList`1 conventions)
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.UpdateEndpoints()
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.Initialize()
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.get_Endpoints()
+   at Microsoft.AspNetCore.Routing.CompositeEndpointDataSource.<>c.<Initialize>b__15_0(EndpointDataSource d)
+   at System.Linq.Enumerable.SelectManySingleSelectorIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.AspNetCore.Routing.CompositeEndpointDataSource.Initialize()
+   at Microsoft.AspNetCore.Routing.DataSourceDependentCache`1.Initialize()
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at System.Threading.LazyInitializer.EnsureInitialized[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at Microsoft.AspNetCore.Routing.Matching.DataSourceDependentMatcher..ctor(EndpointDataSource dataSource, Lifetime lifetime, Func`1 matcherBuilderFactory)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcherFactory.CreateMatcher(EndpointDataSource dataSource)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.InitializeCoreAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.<Invoke>g__AwaitMatcher|8_0(EndpointRoutingMiddleware middleware, HttpContext httpContext, Task`1 matcherTask)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+
+2023-06-23T11:55:07.1833550+05:30	FAIL	[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware]	[UnhandledException]	An unhandled exception has occurred while executing the request.Microsoft.AspNetCore.Routing.Patterns.RoutePatternException: There is an incomplete parameter in the route template. Check that each '{' character has a matching '}' character.
+   at Microsoft.AspNetCore.Routing.Patterns.RoutePatternParser.Parse(String pattern)
+   at Microsoft.AspNetCore.Routing.Patterns.RoutePatternFactory.Parse(String pattern)
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointFactory.AddEndpoints(List`1 endpoints, HashSet`1 routeNames, ActionDescriptor action, IReadOnlyList`1 routes, IReadOnlyList`1 conventions, Boolean createInertEndpoints)
+   at Microsoft.AspNetCore.Mvc.Routing.ControllerActionEndpointDataSource.CreateEndpoints(IReadOnlyList`1 actions, IReadOnlyList`1 conventions)
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.UpdateEndpoints()
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.Initialize()
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.get_Endpoints()
+   at Microsoft.AspNetCore.Routing.CompositeEndpointDataSource.<>c.<Initialize>b__15_0(EndpointDataSource d)
+   at System.Linq.Enumerable.SelectManySingleSelectorIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.AspNetCore.Routing.CompositeEndpointDataSource.Initialize()
+   at Microsoft.AspNetCore.Routing.DataSourceDependentCache`1.Initialize()
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at System.Threading.LazyInitializer.EnsureInitialized[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at Microsoft.AspNetCore.Routing.Matching.DataSourceDependentMatcher..ctor(EndpointDataSource dataSource, Lifetime lifetime, Func`1 matcherBuilderFactory)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcherFactory.CreateMatcher(EndpointDataSource dataSource)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.InitializeCoreAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.<Invoke>g__AwaitMatcher|8_0(EndpointRoutingMiddleware middleware, HttpContext httpContext, Task`1 matcherTask)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+
+2023-06-23T11:56:01.8200846+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T11:56:01.8230251+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T11:56:01.8357946+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T11:56:01.8396546+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T11:56:01.8427687+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T11:58:52.7255203+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T11:58:52.7325763+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T11:58:52.7538337+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T11:58:52.7575442+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T11:58:52.7595705+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T11:59:47.8581821+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T11:59:47.8611943+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T11:59:47.8741513+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T11:59:47.8775178+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T11:59:47.8800392+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T12:01:16.7152807+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T12:01:16.7185706+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T12:01:16.7347007+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T12:01:16.7384260+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T12:01:16.7404386+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T12:02:43.6488831+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T12:02:43.6617867+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T12:02:43.7216924+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T12:02:43.7290076+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T12:02:43.7396672+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T12:05:33.4260062+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T12:05:33.4289358+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T12:05:33.4407462+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T12:05:33.4435101+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T12:05:33.4455296+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T12:07:41.2954661+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T12:07:41.2989520+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T12:07:41.3149905+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T12:07:41.3189252+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T12:07:41.3228874+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T12:09:45.0404752+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T12:09:45.0434601+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T12:09:45.0586880+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T12:09:45.0625208+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T12:09:45.0646312+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T12:09:51.7384059+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	connected

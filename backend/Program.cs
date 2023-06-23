@@ -1,4 +1,5 @@
 using backend.Data;
+using backend.Hubs;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend
@@ -13,6 +14,16 @@ namespace backend
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DB")));
 
             builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddFile("app.log", append: true));
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("CORSPolicy",
+                    builder => builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    .SetIsOriginAllowed((hosts) => true));
+            });
+
 
             builder.Services.AddSignalR();
 
@@ -32,13 +43,15 @@ namespace backend
                 app.UseSwaggerUI();
             }
 
+            app.UseCors("CORSPolicy");
+
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
 
             app.MapControllers();
-            
+            app.MapHub<ExtensionHub>("/hubs/extension");
 
             app.Run();
         }
