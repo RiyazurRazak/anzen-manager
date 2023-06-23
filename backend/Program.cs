@@ -1,6 +1,7 @@
 using backend.Data;
 using backend.Hubs;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
 
 namespace backend
 {
@@ -12,6 +13,8 @@ namespace backend
 
             builder.Services.AddDbContext<ApplicationDbContext>(options => 
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DB")));
+
+            builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("localhost"));
 
             builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddFile("app.log", append: true));
             builder.Services.AddCors(options =>

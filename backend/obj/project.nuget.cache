@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "j6Ln3nQ1KHgaavo3Mb0+h5YCtRqsSgXjt24ocTefcMsW+v6xhcZaL1SvIiQdSgKx/cJJuYTeeCkPyzG09EXtXQ==",
+  "dgSpecHash": "jUZSGtGrtx7Ln23f8b0g29YSUrizzcbKc+cCElwq7d/ruwgy7NZTi2kFLyjNsY4oQeZ07obYqDHy+ifGlb6DSA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Hp\\Documents\\prograd\\anzen-manager\\backend\\backend.csproj",
   "expectedPackageFiles": [
@@ -74,6 +74,9 @@
     "C:\\Users\\Hp\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\nreco.logging.file\\1.1.6\\nreco.logging.file.1.1.6.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\nredisstack\\0.7.0\\nredisstack.0.7.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.2\\pipelines.sockets.unofficial.2.2.2.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\stackexchange.redis\\2.6.96\\stackexchange.redis.2.6.96.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
@@ -87,7 +90,7 @@
     "C:\\Users\\Hp\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.21.0\\system.identitymodel.tokens.jwt.6.21.0.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
-    "C:\\Users\\Hp\\.nuget\\packages\\system.io.pipelines\\4.5.2\\system.io.pipelines.4.5.2.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\system.net.websockets.websocketprotocol\\4.5.1\\system.net.websockets.websocketprotocol.4.5.1.nupkg.sha512",

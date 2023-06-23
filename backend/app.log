@@ -104,3 +104,7 @@ WHERE [Identifier] = @p0;
 2023-06-23T12:09:45.0625208+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
 2023-06-23T12:09:45.0646312+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
 2023-06-23T12:09:51.7384059+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	connected
+2023-06-23T13:34:00.9578111+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-23T14:21:43.4207282+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-23T15:00:28.9944679+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-23T15:24:56.7976899+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
