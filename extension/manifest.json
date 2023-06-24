@@ -4,9 +4,32 @@
     "description": "Anzen Manager Browser Extension",
     "version": "1.0",
     "author": "Riyazur Razak",
+    "icons": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-64.png",
+      "128": "images/icon-128.png"
+    },
     "action": {
         "default_popup": "popup.html",
-        "default_title": "Anzen Manager"
+        "default_title": "Anzen Manager",
+        "default_icon": {
+          "16": "images/icon-16.png",
+          "32": "images/icon-32.png",
+          "48": "images/icon-64.png",
+          "128": "images/icon-128.png"
+        }
+    },
+    "content_scripts": [
+      {
+        "js": [
+          "scripts/content.js"
+        ],
+        "matches": ["<all_urls>"]
+      }
+    ],
+    "background": {
+      "service_worker": "scripts/background.js"
     },
     "permissions": ["scripting", "activeTab", "tabs"],
     "commands": {
