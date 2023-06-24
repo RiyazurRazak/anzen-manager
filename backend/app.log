@@ -127,3 +127,13 @@ WHERE [Identifier] = @p0;
 2023-06-24T12:24:42.2535579+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
 2023-06-24T12:27:16.3781424+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
 2023-06-24T12:28:09.8117285+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T15:16:47.3730334+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-24T15:16:47.3754966+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-24T15:16:47.3855550+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T15:16:47.3885960+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T15:16:47.3905025+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T15:17:58.8624991+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-24T15:17:58.8647693+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-24T15:17:58.8729945+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T15:17:58.8759723+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T15:17:58.8778864+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
