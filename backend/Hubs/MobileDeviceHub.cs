@@ -16,18 +16,29 @@ namespace backend.Hubs
         public override Task OnConnectedAsync()
         {
             var ConnectionId = Context.ConnectionId;
-            var ExtensionId = Context.GetHttpContext().Request.Query["ext"];
-            _database.StringSet($"{ExtensionId}", ConnectionId);
-            _logger.LogInformation("Browser extension connected");
+            var DeviceId = Context.GetHttpContext().Request.Query["mbl"];
+            _database.StringSet($"{DeviceId}", ConnectionId);
+            _logger.LogInformation("mobile device connected");
             return base.OnConnectedAsync();
         }
 
         public override Task OnDisconnectedAsync(Exception? exception)
         {
-            var ExtensionId = Context.GetHttpContext().Request.Query["ext"];
-            _database.KeyDelete($"{ExtensionId}");
-            _logger.LogInformation("Browser extension disconnected");
+            var DeviceId = Context.GetHttpContext().Request.Query["mbl"];
+            _database.KeyDelete($"{DeviceId}");
+            _logger.LogInformation("mobile device disconnected");
             return base.OnDisconnectedAsync(exception);
+        }
+
+        public async Task OnLink(string extensionId)
+        {
+            var extensionConnectionId = _database.StringGet(extensionId);
+            if(!extensionConnectionId.HasValue)
+            {
+                await Clients.Caller.SendAsync("OnLink", "404");
+                return;
+            }
+            await Clients.Client(extensionConnectionId).SendAsync("OnLink", "200");
         }
     }
 }

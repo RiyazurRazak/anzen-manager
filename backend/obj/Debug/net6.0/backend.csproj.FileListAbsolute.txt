@@ -88,3 +88,6 @@ C:\Users\Hp\Documents\prograd\anzen-manager\backend\bin\Debug\net6.0\runtimes\br
 C:\Users\Hp\Documents\prograd\anzen-manager\backend\bin\Debug\net6.0\NReco.Logging.File.dll
 C:\Users\Hp\Documents\prograd\anzen-manager\backend\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\Hp\Documents\prograd\anzen-manager\backend\bin\Debug\net6.0\System.Net.WebSockets.WebSocketProtocol.dll
+C:\Users\Hp\Documents\prograd\anzen-manager\backend\bin\Debug\net6.0\NRedisStack.dll
+C:\Users\Hp\Documents\prograd\anzen-manager\backend\bin\Debug\net6.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\Hp\Documents\prograd\anzen-manager\backend\bin\Debug\net6.0\StackExchange.Redis.dll

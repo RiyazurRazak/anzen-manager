@@ -13,6 +13,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.7",
           "NReco.Logging.File": "1.1.6",
+          "NRedisStack": "0.7.0",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
@@ -83,7 +84,7 @@
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "2.2.0",
-          "System.IO.Pipelines": "4.5.2"
+          "System.IO.Pipelines": "5.0.1"
         }
       },
       "Microsoft.AspNetCore.Hosting.Abstractions/2.2.0": {
@@ -669,6 +670,39 @@
           }
         }
       },
+      "NRedisStack/0.7.0": {
+        "dependencies": {
+          "StackExchange.Redis": "2.6.96"
+        },
+        "runtime": {
+          "lib/net6.0/NRedisStack.dll": {
+            "assemblyVersion": "0.7.0.0",
+            "fileVersion": "0.7.0.0"
+          }
+        }
+      },
+      "Pipelines.Sockets.Unofficial/2.2.2": {
+        "dependencies": {
+          "System.IO.Pipelines": "5.0.1"
+        },
+        "runtime": {
+          "lib/net5.0/Pipelines.Sockets.Unofficial.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "2.2.2.34088"
+          }
+        }
+      },
+      "StackExchange.Redis/2.6.96": {
+        "dependencies": {
+          "Pipelines.Sockets.Unofficial": "2.2.2"
+        },
+        "runtime": {
+          "lib/net5.0/StackExchange.Redis.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.6.96.30123"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.2.3": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "3.0.0",
@@ -783,7 +817,7 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.IO.Pipelines/4.5.2": {},
+      "System.IO.Pipelines/5.0.1": {},
       "System.Memory/4.5.4": {},
       "System.Memory.Data/1.0.2": {
         "dependencies": {
@@ -1482,6 +1516,27 @@
       "path": "nreco.logging.file/1.1.6",
       "hashPath": "nreco.logging.file.1.1.6.nupkg.sha512"
     },
+    "NRedisStack/0.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JXXjbYYkRNipoTxNROl4/dN3eOpJpXI8I7NOKM2cUoHWp5zyX5bV5zbbh8/Bf3owQFw6BOt+PLkc9PW9xBUO3g==",
+      "path": "nredisstack/0.7.0",
+      "hashPath": "nredisstack.0.7.0.nupkg.sha512"
+    },
+    "Pipelines.Sockets.Unofficial/2.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Bhk0FWxH1paI+18zr1g5cTL+ebeuDcBCR+rRFO+fKEhretgjs7MF2Mc1P64FGLecWp4zKCUOPzngBNrqVyY7Zg==",
+      "path": "pipelines.sockets.unofficial/2.2.2",
+      "hashPath": "pipelines.sockets.unofficial.2.2.2.nupkg.sha512"
+    },
+    "StackExchange.Redis/2.6.96": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JDj94bTwBZ6zA1vknEYJppRXRejTnl5u2z6cRBQ0DJ+Uy94qvn0XsQZ2M+1/VkqtxQ+LUU1h4JZWwcvVojGiQg==",
+      "path": "stackexchange.redis/2.6.96",
+      "hashPath": "stackexchange.redis.2.6.96.nupkg.sha512"
+    },
     "Swashbuckle.AspNetCore/6.2.3": {
       "type": "package",
       "serviceable": true,
@@ -1573,12 +1628,12 @@
       "path": "system.io/4.3.0",
       "hashPath": "system.io.4.3.0.nupkg.sha512"
     },
-    "System.IO.Pipelines/4.5.2": {
+    "System.IO.Pipelines/5.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-NOC/SO4gSX6t0tB25xxDPqPEzkksuzW7NVFBTQGAkjXXUPQl7ZtyE83T7tUCP2huFBbPombfCKvq1Ox1aG8D9w==",
-      "path": "system.io.pipelines/4.5.2",
-      "hashPath": "system.io.pipelines.4.5.2.nupkg.sha512"
+      "sha512": "sha512-qEePWsaq9LoEEIqhbGe6D5J8c9IqQOUuTzzV6wn1POlfdLkJliZY3OlB0j0f17uMWlqZYjH7txj+2YbyrIA8Yg==",
+      "path": "system.io.pipelines/5.0.1",
+      "hashPath": "system.io.pipelines.5.0.1.nupkg.sha512"
     },
     "System.Memory/4.5.4": {
       "type": "package",

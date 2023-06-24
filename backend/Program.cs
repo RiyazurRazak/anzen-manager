@@ -55,6 +55,7 @@ namespace backend
 
             app.MapControllers();
             app.MapHub<ExtensionHub>("/hubs/extension");
+            app.MapHub<MobileDeviceHub>("/hubs/mobile");
 
             app.Run();
         }
