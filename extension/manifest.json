@@ -23,7 +23,9 @@
     "content_scripts": [
       {
         "js": [
+          "scripts/lib/signalr.js",
           "scripts/content.js"
+          
         ],
         "matches": ["<all_urls>"]
       }
