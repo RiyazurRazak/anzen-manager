@@ -488,3 +488,25 @@ WHERE [Identifier] = @p0;
 2023-06-24T21:57:35.8487107+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
 2023-06-24T21:57:37.5343141+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
 2023-06-24T21:57:43.3249325+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-27T12:19:39.6967665+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-27T12:19:39.6999929+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-27T12:19:39.7109340+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-27T12:19:39.7149132+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-27T12:19:39.7172339+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-27T12:22:57.2815355+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-27T12:22:57.2854107+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-27T12:22:57.2973444+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-27T12:22:57.3015141+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-27T12:22:57.3042009+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-27T12:23:09.0971301+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-27T12:23:09.1024137+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-27T12:23:09.1199991+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-27T12:23:09.1257527+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-27T12:23:09.1290763+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-27T12:24:16.4947042+05:30	INFO	[backend.Hubs.ConnectionHub]	[0]	device connected
+2023-06-27T12:30:32.9174370+05:30	INFO	[backend.Hubs.ConnectionHub]	[0]	device connected
+2023-06-27T12:34:16.1703655+05:30	INFO	[backend.Hubs.ConnectionHub]	[0]	device disconnected
+2023-06-27T12:34:25.5689833+05:30	INFO	[backend.Hubs.ConnectionHub]	[0]	device connected
+2023-06-27T12:35:30.6070491+05:30	INFO	[backend.Hubs.ConnectionHub]	[0]	device disconnected
+2023-06-27T12:38:17.6224639+05:30	INFO	[backend.Hubs.ConnectionHub]	[0]	device connected
+2023-06-27T12:39:54.3392127+05:30	INFO	[backend.Hubs.ConnectionHub]	[0]	device disconnected

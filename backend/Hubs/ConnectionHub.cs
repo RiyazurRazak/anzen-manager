@@ -30,9 +30,17 @@ namespace backend.Hubs
             return base.OnDisconnectedAsync(exception);
         }
 
-        public async Task OnLink(string msg)
+        public async Task OnLink(string extensionId, string deviceName)
         {
-            await Clients.Caller.SendAsync(msg);
+            Console.WriteLine(extensionId);
+            Console.WriteLine(deviceName);
+            var extensionConnectionId = _database.StringGet(extensionId);
+            if (!extensionConnectionId.HasValue)
+            {
+                await Clients.Caller.SendAsync("OnLink", "404");
+                return;
+            }
+            await Clients.Client((string)extensionConnectionId).SendAsync("OnLink", deviceName);
         }
 
     }
