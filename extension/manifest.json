@@ -33,12 +33,12 @@
     "background": {
       "service_worker": "scripts/background.js"
     },
-    "permissions": ["scripting", "activeTab", "tabs"],
+    "permissions": ["scripting", "activeTab", "tabs", "storage"],
     "commands": {
       "_execute_action": {
         "suggested_key": {
           "default": "Ctrl+Shift+A",
-          "mac": "Command+A"
+          "mac": "Command+Shift+A"
         }
       }
     }

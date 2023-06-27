@@ -1,8 +1,15 @@
 let isFound = false;
 let connection = null;
 let passwordNode = null;
-const connectToServer = async () => {
-  const url = "https://192.168.0.102:7229/hubs/transport?amId=12345";
+// port for communication to the service worker
+const port = chrome.runtime.connect({ name: "anzen" });
+
+/**
+ * connect to the signalr server and listen to the methods
+ * @param {string} id - unique extension id
+ */
+const connectToServer = async (id) => {
+  const url = `https://192.168.0.102:7229/hubs/transport?amId=${id}`;
 
   try {
     connection = new signalR.HubConnectionBuilder()
@@ -23,16 +30,30 @@ const connectToServer = async () => {
   }
 };
 
+/**
+ * find the password input in the webpage loaded
+ */
 const findDomNodes = () => {
   passwordNode = document.querySelector("input[type='password']");
   if (passwordNode !== null) {
     if (!Boolean(passwordNode.getAttribute("aria-hidden"))) {
       isFound = true;
-      connectToServer();
+      port.postMessage({ type: "INIT" });
+      port.onMessage.addListener(function (res) {
+        if (res.type === "INIT") {
+          const id = res.msg?.anzenId;
+          if (id) {
+            connectToServer(id);
+          }
+        }
+      });
     }
   }
 };
 
+/**
+ * initialize the mutation observer to listen the changes of dom in webpage
+ */
 const mutationObserver = new MutationObserver((mutations) => {
   for (let i = 0; i < mutations.length; i++) {
     if (
@@ -46,6 +67,9 @@ const mutationObserver = new MutationObserver((mutations) => {
   }
 });
 
+/**
+ * observe the entire dom tree for changes
+ */
 mutationObserver.observe(document.documentElement, {
   attributes: false,
   characterData: false,
@@ -55,6 +79,9 @@ mutationObserver.observe(document.documentElement, {
   characterDataOldValue: false,
 });
 
+/**
+ * observe the visibility status to track the current active tab in the window
+ */
 document.addEventListener(
   "visibilitychange",
   async () => {
@@ -71,5 +98,3 @@ document.addEventListener(
   },
   false
 );
-
-// setTimeout(findDomNodes, 1000);
