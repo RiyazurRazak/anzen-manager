@@ -32,8 +32,6 @@ namespace backend.Hubs
 
         public async Task OnLink(string extensionId, string deviceName)
         {
-            Console.WriteLine(extensionId);
-            Console.WriteLine(deviceName);
             var extensionConnectionId = _database.StringGet(extensionId);
             if (!extensionConnectionId.HasValue)
             {
