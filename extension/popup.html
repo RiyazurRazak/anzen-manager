@@ -3,7 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src *;" />
     <title>Anzen Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./scripts/lib/signalr.js"></script>
+    <script src="./scripts//lib/qr.js"></script>
+    <script src="./scripts/popup.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <h3 class="title">Anzen Manager</h3>
+      <p class="subtitle" id="linked-title"></p>
+      <div class="content" id="content"></div>
+      <template id="anzen-registration">
+        <div class="qrcode" id="registration-code" />
+        <p class="helper_text">
+          Scan me to proceed registration with the application
+        </p>
+      </template>
+      <template id="anzen-loggedin">
+        <p class="helper_text">
+          Linked with the anzen mobile app. Use your mobile app to authenticate
+        </p>
+        <iframe
+          class="animation_panel"
+          src="https://lottie.host/?file=65f0cb75-48b3-4186-b3e3-ecf0bd21eab6/oV7JhaI5LC.json"
+        ></iframe>
+      </template>
+      <template id="anzen-key-share">
+        <div class="qrcode" id="key-code" />
+        <p class="helper_text">
+          Scan me to exchange Asymmetric public key for E2EE; (Don't share this
+          qrcode with others)
+        </p>
+      </template>
+    </main>
+  </body>
 </html>
