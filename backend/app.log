@@ -1,0 +1,522 @@
+2023-06-22T19:57:28.7669045+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-22T19:57:28.7708123+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-22T19:57:28.7865932+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-22T19:57:28.7901016+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-22T19:57:28.7922591+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-22T19:58:24.1593884+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (82ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [d].[Identifier], [d].[Model]
+FROM [Devices] AS [d]
+WHERE [d].[Identifier] = @__p_0
+2023-06-22T19:58:24.3946972+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (13ms) [Parameters=[@p0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Devices]
+OUTPUT 1
+WHERE [Identifier] = @p0;
+2023-06-22T19:58:24.4083311+05:30	INFO	[backend.Controllers.DevicesController]	[0]	Device successfully deleted
+2023-06-23T11:55:05.1426485+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T11:55:05.1755682+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T11:55:05.2098676+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T11:55:05.2373018+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T11:55:05.2398515+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T11:55:06.2805101+05:30	FAIL	[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware]	[UnhandledException]	An unhandled exception has occurred while executing the request.Microsoft.AspNetCore.Routing.Patterns.RoutePatternException: There is an incomplete parameter in the route template. Check that each '{' character has a matching '}' character.
+   at Microsoft.AspNetCore.Routing.Patterns.RoutePatternParser.Parse(String pattern)
+   at Microsoft.AspNetCore.Routing.Patterns.RoutePatternFactory.Parse(String pattern)
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointFactory.AddEndpoints(List`1 endpoints, HashSet`1 routeNames, ActionDescriptor action, IReadOnlyList`1 routes, IReadOnlyList`1 conventions, Boolean createInertEndpoints)
+   at Microsoft.AspNetCore.Mvc.Routing.ControllerActionEndpointDataSource.CreateEndpoints(IReadOnlyList`1 actions, IReadOnlyList`1 conventions)
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.UpdateEndpoints()
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.Initialize()
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.get_Endpoints()
+   at Microsoft.AspNetCore.Routing.CompositeEndpointDataSource.<>c.<Initialize>b__15_0(EndpointDataSource d)
+   at System.Linq.Enumerable.SelectManySingleSelectorIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.AspNetCore.Routing.CompositeEndpointDataSource.Initialize()
+   at Microsoft.AspNetCore.Routing.DataSourceDependentCache`1.Initialize()
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at System.Threading.LazyInitializer.EnsureInitialized[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at Microsoft.AspNetCore.Routing.Matching.DataSourceDependentMatcher..ctor(EndpointDataSource dataSource, Lifetime lifetime, Func`1 matcherBuilderFactory)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcherFactory.CreateMatcher(EndpointDataSource dataSource)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.InitializeCoreAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.<Invoke>g__AwaitMatcher|8_0(EndpointRoutingMiddleware middleware, HttpContext httpContext, Task`1 matcherTask)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+
+2023-06-23T11:55:07.1833550+05:30	FAIL	[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware]	[UnhandledException]	An unhandled exception has occurred while executing the request.Microsoft.AspNetCore.Routing.Patterns.RoutePatternException: There is an incomplete parameter in the route template. Check that each '{' character has a matching '}' character.
+   at Microsoft.AspNetCore.Routing.Patterns.RoutePatternParser.Parse(String pattern)
+   at Microsoft.AspNetCore.Routing.Patterns.RoutePatternFactory.Parse(String pattern)
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointFactory.AddEndpoints(List`1 endpoints, HashSet`1 routeNames, ActionDescriptor action, IReadOnlyList`1 routes, IReadOnlyList`1 conventions, Boolean createInertEndpoints)
+   at Microsoft.AspNetCore.Mvc.Routing.ControllerActionEndpointDataSource.CreateEndpoints(IReadOnlyList`1 actions, IReadOnlyList`1 conventions)
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.UpdateEndpoints()
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.Initialize()
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointDataSourceBase.get_Endpoints()
+   at Microsoft.AspNetCore.Routing.CompositeEndpointDataSource.<>c.<Initialize>b__15_0(EndpointDataSource d)
+   at System.Linq.Enumerable.SelectManySingleSelectorIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.AspNetCore.Routing.CompositeEndpointDataSource.Initialize()
+   at Microsoft.AspNetCore.Routing.DataSourceDependentCache`1.Initialize()
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at System.Threading.LazyInitializer.EnsureInitialized[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at Microsoft.AspNetCore.Routing.Matching.DataSourceDependentMatcher..ctor(EndpointDataSource dataSource, Lifetime lifetime, Func`1 matcherBuilderFactory)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcherFactory.CreateMatcher(EndpointDataSource dataSource)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.InitializeCoreAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.<Invoke>g__AwaitMatcher|8_0(EndpointRoutingMiddleware middleware, HttpContext httpContext, Task`1 matcherTask)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+
+2023-06-23T11:56:01.8200846+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T11:56:01.8230251+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T11:56:01.8357946+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T11:56:01.8396546+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T11:56:01.8427687+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T11:58:52.7255203+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T11:58:52.7325763+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T11:58:52.7538337+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T11:58:52.7575442+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T11:58:52.7595705+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T11:59:47.8581821+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T11:59:47.8611943+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T11:59:47.8741513+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T11:59:47.8775178+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T11:59:47.8800392+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T12:01:16.7152807+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T12:01:16.7185706+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T12:01:16.7347007+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T12:01:16.7384260+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T12:01:16.7404386+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T12:02:43.6488831+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T12:02:43.6617867+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T12:02:43.7216924+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T12:02:43.7290076+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T12:02:43.7396672+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T12:05:33.4260062+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T12:05:33.4289358+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T12:05:33.4407462+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T12:05:33.4435101+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T12:05:33.4455296+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T12:07:41.2954661+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T12:07:41.2989520+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T12:07:41.3149905+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T12:07:41.3189252+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T12:07:41.3228874+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T12:09:45.0404752+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-23T12:09:45.0434601+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-23T12:09:45.0586880+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-23T12:09:45.0625208+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-23T12:09:45.0646312+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-23T12:09:51.7384059+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	connected
+2023-06-23T13:34:00.9578111+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-23T14:21:43.4207282+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-23T15:00:28.9944679+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-23T15:24:56.7976899+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T12:01:38.0843601+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-24T12:01:38.0903132+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-24T12:01:38.1065454+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T12:01:38.1115282+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T12:01:38.1149515+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T12:02:13.3560161+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T12:02:41.1757191+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T12:20:33.8213159+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T12:24:16.1440826+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-24T12:24:16.1490814+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-24T12:24:16.1683136+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T12:24:16.1741579+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T12:24:16.1785266+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T12:24:28.2933782+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T12:24:31.1796070+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T12:24:34.2732605+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T12:24:42.2535579+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T12:27:16.3781424+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T12:28:09.8117285+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T15:16:47.3730334+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-24T15:16:47.3754966+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-24T15:16:47.3855550+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T15:16:47.3885960+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T15:16:47.3905025+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T15:17:58.8624991+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-24T15:17:58.8647693+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-24T15:17:58.8729945+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T15:17:58.8759723+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T15:17:58.8778864+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T16:55:38.3096737+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-24T16:55:38.3131774+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5092
+2023-06-24T16:55:38.3258919+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T16:55:38.3293674+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T16:55:38.3319541+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T17:11:26.1454073+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7229
+2023-06-24T17:11:26.1492852+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-24T17:11:26.1592872+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T17:11:26.1630218+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T17:11:26.1649008+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T17:14:15.8364922+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-24T17:14:15.8402229+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-24T17:14:15.8495705+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T17:14:15.8526918+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T17:14:15.8546086+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T17:14:42.9267492+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:14:51.0948828+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:14:57.5631992+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:15:08.7174368+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:22:09.6859144+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:22:12.0751141+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:43:00.6619335+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:43:36.9749435+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:43:39.2724190+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:43:43.8129153+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:44:00.3149544+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:44:00.3961505+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:44:02.8180088+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:44:03.9221368+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:45:09.3051433+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:45:09.3887949+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:45:10.1751512+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:45:53.8470705+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:45:53.9017038+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:45:56.0862574+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:45:56.5123079+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:46:13.4729688+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:46:14.5578218+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:46:20.5839241+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:46:21.4996948+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:46:22.5259663+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:46:23.5255295+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:46:48.8245061+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:46:49.2573908+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:48:42.4510569+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:48:42.8822876+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:49:35.1346194+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:49:35.4545141+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:49:41.9739521+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:49:43.8190248+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:50:46.6729411+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:50:47.6251517+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:50:48.6419710+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:51:13.8607955+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:51:13.9491671+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:51:16.0290859+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:51:16.7788055+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:51:19.5824797+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:51:19.9381856+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:51:37.3897296+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:52:10.7552561+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:52:13.7094483+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:52:24.6406034+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:52:26.0380524+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:52:27.4616134+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:52:29.2411451+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T17:54:00.8580728+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:55:04.9044382+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T17:55:04.9376303+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T18:15:25.8655174+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T18:16:30.2725121+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-24T18:16:30.2761702+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-24T18:16:30.2855331+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T18:16:30.2889171+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T18:16:30.2908844+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T18:16:51.1389353+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T18:17:29.4800367+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T18:19:36.4981830+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T18:19:38.1120969+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension connected
+2023-06-24T18:20:51.2981116+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T18:20:52.8837368+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	12345 9-4LDLY0IAkx4BOFJQj4rg
+2023-06-24T18:31:22.1314676+05:30	INFO	[backend.Hubs.ExtensionHub]	[0]	Browser extension disconnected
+2023-06-24T18:31:22.8922760+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T18:31:55.9052353+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T18:32:04.8374779+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T18:32:19.0906619+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T18:32:29.7573421+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T18:32:30.5429231+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T18:42:59.8791669+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T18:42:59.8815913+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:13:59.8991158+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:14:07.9219496+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:14:10.8864599+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:14:56.6855049+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-24T19:14:56.6890730+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-24T19:14:56.6997506+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T19:14:56.7033582+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T19:14:56.7053165+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T19:15:15.3204196+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:15:27.4370948+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:15:29.9237914+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:15:30.8631480+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:15:48.1376457+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:15:49.2107823+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:15:50.4714311+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:15:51.7400951+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:15:53.1537502+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:15:53.4255677+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:16:21.7154433+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:16:47.7214160+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:17:14.8365385+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:17:17.2415415+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:17:18.0153662+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:18:03.3127639+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:18:04.3401358+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:18:04.7042763+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:18:05.0563744+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:18:08.5958292+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:18:09.5266459+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:19:44.1831515+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T19:20:41.8877357+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:20:44.8420588+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:21:02.0063615+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:36:14.5631546+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T19:43:28.5501126+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:00:11.3096249+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:12:23.9028850+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:19:27.3447223+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:19:32.9578433+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:19:33.6855586+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:19:36.0369174+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:19:37.0340539+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:19:38.0820568+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:19:38.8021520+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:19:48.4249485+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:19:48.4958416+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:19:57.9529883+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:19:59.6670635+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:20:09.8766340+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:20:17.0378951+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:20:17.4720497+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:21:23.1607515+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:23:25.8169415+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:23:29.0830640+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:23:29.9076104+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:24:03.1428732+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:24:03.4820738+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:24:09.8572976+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:24:10.1117766+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:24:17.5743956+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:25:36.4218758+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:25:37.3264386+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:25:38.3015652+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:25:39.1761077+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:29:06.1975074+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:42:59.3127997+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:42:59.3497040+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:43:00.6529753+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:43:00.6594505+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:43:00.6691149+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:43:00.6751253+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:43:19.2255116+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:43:35.7233480+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-24T20:43:35.7288739+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-24T20:43:35.7515125+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T20:43:35.7566866+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T20:43:35.7606325+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T20:43:48.3353439+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:44:06.0784801+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:44:31.5131923+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:45:20.0844318+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:45:25.9961794+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:50:24.4659281+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:50:42.9663119+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:50:43.9759015+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:50:47.0968138+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:50:47.6613482+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:51:58.2625819+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:51:59.4134858+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:52:00.1586251+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:52:39.1947640+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:52:39.5980155+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:54:01.0286607+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:54:01.3874674+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:54:23.6981334+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:54:24.1173659+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:54:25.9385147+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:54:26.9062835+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:54:46.5226145+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:54:47.6764195+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:54:48.5737494+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:54:49.6360219+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:56:53.9091940+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:57:17.2933125+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:57:18.8852564+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:57:22.6302111+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:57:51.8037737+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:57:52.1442102+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:59:15.1181310+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:59:22.6423347+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:59:23.3009888+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:59:42.9373496+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T20:59:45.4699967+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T20:59:53.8480811+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:03:43.3939111+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:03:43.5118059+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:03:44.5448817+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:03:45.5120387+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:04:02.3478830+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-24T21:04:02.3561953+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-24T21:04:02.3775762+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T21:04:02.3868966+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T21:04:02.3938872+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T21:04:09.4962135+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:05:10.6954954+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:05:11.5709239+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:05:12.1232063+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:05:20.3631611+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:05:20.6562080+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:05:24.4762937+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:05:25.1527148+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:05:29.4768858+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:05:29.5320606+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:05:39.0690597+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:05:42.8165070+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:05:54.0530815+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:05:55.3890799+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:06:00.4123548+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:06:01.1786891+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:06:02.2432211+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:06:03.0234866+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:08:21.1886384+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:08:25.3126462+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:08:26.0724020+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:08:27.9592421+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:08:28.7350202+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:08:44.5743784+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:08:44.6406202+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:08:51.1046034+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:08:51.6960843+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:09:15.8816489+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:09:15.9666164+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:09:19.4680702+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:09:19.9357788+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:09:24.4793441+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:09:24.5312115+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:09:28.7871625+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:09:29.9402479+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:09:32.2731856+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:09:33.7299317+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:09:39.2772566+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:09:39.3392713+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:09:45.3710145+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:09:45.3774519+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:10:02.9968358+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:10:04.4219427+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:10:04.5608226+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:10:06.4250056+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:10:08.3763072+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device connected
+2023-06-24T21:10:10.4628552+05:30	INFO	[backend.Hubs.MobileDeviceHub]	[0]	mobile device disconnected
+2023-06-24T21:19:41.0842439+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-24T21:19:41.0908828+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-24T21:19:41.1098511+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T21:19:41.1175715+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T21:19:41.1244012+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T21:25:06.7532085+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-24T21:25:06.7590528+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-24T21:25:06.7774975+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T21:25:06.7838901+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T21:25:06.7906846+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T21:25:32.5710599+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:25:43.2787089+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:27:22.9707168+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:27:25.5225554+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:27:52.0909164+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-24T21:27:52.0949157+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-24T21:27:52.1100200+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-24T21:27:52.1137202+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-24T21:27:52.1162926+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-24T21:27:58.2063781+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:28:31.1390624+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:29:27.0005705+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:32:45.1632169+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:33:45.5796723+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:33:49.8797116+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:35:54.0860952+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:35:55.7726981+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:36:00.3102528+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:37:50.3909554+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:37:56.3628374+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:38:02.6509954+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:38:10.3507223+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:38:16.7354416+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:38:22.1376229+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:38:22.2076340+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:38:31.3554576+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:38:31.4256860+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:39:42.2522937+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:39:44.4429721+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:39:50.4120450+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:40:02.3328275+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:40:07.7354969+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:41:07.0508931+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:41:20.1131595+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:41:30.3053541+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:42:06.9240911+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:43:21.2297494+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:43:40.2593305+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:43:41.7117404+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:44:38.0282340+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:44:44.2983661+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:45:18.4935150+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:45:21.3231242+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:45:28.7857750+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:46:05.1387537+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:46:11.4511308+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:46:16.9324219+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:46:22.5251740+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:46:32.2768378+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:46:43.6990192+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:51:13.2896123+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:51:15.8603110+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:51:18.6054665+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:51:37.2863773+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:51:49.5724813+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:52:02.2697928+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:52:05.5077418+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:52:07.4206212+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:52:09.5007728+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:52:26.2531782+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:53:35.0004071+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:53:36.9170734+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:53:39.0973670+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:53:49.6786259+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:54:08.9087401+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:54:10.3718786+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:54:12.0554604+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:54:57.0723633+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:56:53.2918261+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:56:56.9506535+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:56:57.5357467+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:57:08.4522244+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:57:11.6945158+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:57:24.1189610+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:57:26.7055710+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:57:30.1578704+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:57:30.6331392+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:57:34.6652869+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:57:35.8487107+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-24T21:57:37.5343141+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device disconnected
+2023-06-24T21:57:43.3249325+05:30	INFO	[backend.Hubs.TransportHub]	[0]	mobile device connected
+2023-06-27T12:19:39.6967665+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-27T12:19:39.6999929+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-27T12:19:39.7109340+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-27T12:19:39.7149132+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-27T12:19:39.7172339+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-27T12:22:57.2815355+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-27T12:22:57.2854107+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-27T12:22:57.2973444+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-27T12:22:57.3015141+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-27T12:22:57.3042009+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-27T12:23:09.0971301+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-27T12:23:09.1024137+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-27T12:23:09.1199991+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-27T12:23:09.1257527+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-27T12:23:09.1290763+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-27T12:24:16.4947042+05:30	INFO	[backend.Hubs.ConnectionHub]	[0]	device connected
+2023-06-27T12:30:32.9174370+05:30	INFO	[backend.Hubs.ConnectionHub]	[0]	device connected
+2023-06-27T12:34:16.1703655+05:30	INFO	[backend.Hubs.ConnectionHub]	[0]	device disconnected
+2023-06-27T12:34:25.5689833+05:30	INFO	[backend.Hubs.ConnectionHub]	[0]	device connected
+2023-06-27T12:35:30.6070491+05:30	INFO	[backend.Hubs.ConnectionHub]	[0]	device disconnected
+2023-06-27T12:38:17.6224639+05:30	INFO	[backend.Hubs.ConnectionHub]	[0]	device connected
+2023-06-27T12:39:54.3392127+05:30	INFO	[backend.Hubs.ConnectionHub]	[0]	device disconnected
+2023-06-28T11:15:00.3633014+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-06-28T11:15:00.3753368+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-06-28T11:15:00.4007304+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-06-28T11:15:00.4074946+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-06-28T11:15:00.4119027+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-06-28T11:16:28.9823402+05:30	INFO	[backend.Controller.PasswordController]	[0]	Return labels of the device
+2023-06-28T11:16:33.9175676+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (481ms) [Parameters=[@__identifier_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Label], [p].[Id]
+FROM [Passwords] AS [p]
+WHERE [p].[DeviceId] = @__identifier_0

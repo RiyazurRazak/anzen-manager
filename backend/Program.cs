@@ -1,3 +1,8 @@
+using backend.Data;
+using backend.Hubs;
+using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
+
 namespace backend
 {
     public class Program
@@ -5,6 +10,25 @@ namespace backend
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options => 
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DB")));
+
+            builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("localhost"));
+
+            builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddFile("app.log", append: true));
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("CORSPolicy",
+                    builder => builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    .SetIsOriginAllowed((hosts) => true));
+            });
+
+
+            builder.Services.AddSignalR();
 
             // Add services to the container.
 
@@ -22,12 +46,16 @@ namespace backend
                 app.UseSwaggerUI();
             }
 
+            app.UseCors("CORSPolicy");
+
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
 
             app.MapControllers();
+            app.MapHub<ConnectionHub>("/hubs/connection");
+            app.MapHub<TransportHub>("/hubs/transport");
 
             app.Run();
         }
