@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/constants/app_colors.dart';
@@ -30,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Content(value: "New Key"),
+                    Content(value: "New Password"),
                     const SizedBox(width: 5),
                     const Icon(
                       Icons.add,
@@ -47,52 +49,42 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             children: [
               IconButton(
+                iconSize: 32,
                 onPressed: () {},
                 icon: const Icon(
-                  CupertinoIcons.settings,
-                  size: 28,
+                  CupertinoIcons.bars,
+                  size: 32,
                 ),
               )
             ],
           ),
         ),
       ),
-      body: SafeArea(
+      body: const SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(12.0),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Heading(
-                  value: "Keep\n   Your  Life\nSafe",
+                Heading(
+                  value: "Keep Your\nLife Safe",
                 ),
-                const SizedBox(
-                  height: 12,
-                ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Content(value: "Add New Device"),
-                        const SizedBox(width: 8),
-                        const Icon(
-                          Icons.add,
-                          color: Colors.black,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 24),
-                const SubHeading(value: "My Linked Devices"),
+                SizedBox(height: 24),
+                SubHeading(value: "My Linked Devices"),
               ],
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        icon: const Icon(
+          CupertinoIcons.add,
+        ),
+        label: Content(value: "New Device"),
+        isExtended: true,
+        backgroundColor: Colors.white,
       ),
     );
   }
