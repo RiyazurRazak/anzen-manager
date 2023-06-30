@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:frontend/constants/app_colors.dart';
 import 'package:frontend/constants/storage_keys.dart';
+import 'package:frontend/services/storage/secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -34,7 +34,6 @@ class _SplashScreenState extends State<SplashScreen> {
     var uuid = const Uuid();
     box.put("deviceId", uuid.v4());
     final deviceInfoPlugin = DeviceInfoPlugin();
-    const storage = FlutterSecureStorage();
     if (Platform.isIOS) {
       final info = await deviceInfoPlugin.iosInfo;
       String stringPool = "";
@@ -45,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
       stringPool += info.systemVersion;
       box.put("name", info.name);
       var aesKey = _generateSymmetricKey(stringPool);
-      storage.write(key: "aesKey", value: aesKey);
+      SecureStorage().write("aesKey", aesKey);
     } else if (Platform.isAndroid) {
       final info = await deviceInfoPlugin.androidInfo;
       String stringPool = "";
@@ -56,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
       stringPool += info.display;
       box.put("name", info.model);
       var aesKey = _generateSymmetricKey(stringPool);
-      storage.write(key: "aesKey", value: aesKey);
+      SecureStorage().write("aesKey", aesKey);
     }
   }
 
@@ -74,6 +73,12 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     _checkStatus();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    Hive.close();
+    super.dispose();
   }
 
   @override
