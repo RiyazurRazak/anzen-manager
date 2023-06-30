@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/constants/app_colors.dart';
 import 'package:frontend/routes.dart';
 import 'package:frontend/screens/SplashScreen/splash_screen.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Anzen Manager',
       theme: ThemeData(
-        colorScheme: const ColorScheme.light(),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: AppColors.splashScreenBackground),
         useMaterial3: true,
         fontFamily: GoogleFonts.inter().fontFamily,
       ),
