@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:frontend/constants/app_colors.dart';
 import 'package:frontend/constants/storage_keys.dart';
+import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:lottie/lottie.dart';
@@ -66,6 +67,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (deviceId == null) {
       _initApplication(initBox);
     }
+    Get.offNamed("/home");
   }
 
   @override
