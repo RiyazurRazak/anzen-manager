@@ -20,6 +20,10 @@ class _HomeScreenState extends State<HomeScreen> {
     Get.toNamed("/about");
   }
 
+  void onActionBtnTapHandller() {
+    Get.toNamed("/generate-password");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.only(right: 8.0, top: 16.0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: onActionBtnTapHandller,
               child: Padding(
                 padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                 child: Row(
