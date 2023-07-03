@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/constants/app_colors.dart';
+import 'package:frontend/widgets/panel/device_card.dart';
+import 'package:frontend/widgets/panel/extension_card.dart';
 import 'package:frontend/widgets/typography/content.dart';
 import 'package:frontend/widgets/typography/heading.dart';
 import 'package:frontend/widgets/typography/subheading.dart';
@@ -58,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: const SafeArea(
+      body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(12.0),
           child: SingleChildScrollView(
@@ -70,6 +72,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 24),
                 SubHeading(value: "My Linked Devices"),
+                SizedBox(height: 24),
+                DeviceCard(),
+                ExtensionCard(
+                  label: "Label",
+                  datetime: "22/03/22",
+                ),
               ],
             ),
           ),
