@@ -46,6 +46,10 @@ dependencies:
   flutter_svg: ^2.0.7
   local_auth: ^2.1.6
   sleek_circular_slider: ^2.0.1
+  qr_code_scanner: ^1.0.1
+  signalr_netcore: ^0.1.7+2-nullsafety.3
+  dio: ^5.2.1+1
+  fast_rsa: ^3.5.7
 
 dev_dependencies:
   flutter_test:
