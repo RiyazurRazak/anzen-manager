@@ -6,6 +6,7 @@ import 'package:frontend/widgets/panel/extension_card.dart';
 import 'package:frontend/widgets/typography/content.dart';
 import 'package:frontend/widgets/typography/heading.dart';
 import 'package:frontend/widgets/typography/subheading.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +16,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void onLeadingPressHandller() {
+    Get.toNamed("/about");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               IconButton(
                 iconSize: 32,
-                onPressed: () {},
+                onPressed: onLeadingPressHandller,
                 icon: const Icon(
                   CupertinoIcons.bars,
                   size: 32,
