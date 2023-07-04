@@ -21,7 +21,7 @@ class _DeviceCardState extends State<DeviceCard> {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     var name = "";
     if (Platform.isAndroid) {
-      name = (await deviceInfo.androidInfo).model;
+      name = (await deviceInfo.androidInfo).device;
     } else if (Platform.isIOS) {
       name = (await deviceInfo.iosInfo).name;
     }
