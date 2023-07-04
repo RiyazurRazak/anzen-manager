@@ -91,3 +91,4 @@ C:\Users\Hp\Documents\prograd\anzen-manager\backend\bin\Debug\net6.0\System.Net.
 C:\Users\Hp\Documents\prograd\anzen-manager\backend\bin\Debug\net6.0\NRedisStack.dll
 C:\Users\Hp\Documents\prograd\anzen-manager\backend\bin\Debug\net6.0\Pipelines.Sockets.Unofficial.dll
 C:\Users\Hp\Documents\prograd\anzen-manager\backend\bin\Debug\net6.0\StackExchange.Redis.dll
+C:\Users\Hp\Documents\prograd\anzen-manager\backend\bin\Debug\net6.0\Azure.Security.KeyVault.Secrets.dll
