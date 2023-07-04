@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/constants/app_colors.dart';
+import 'package:frontend/services/api/password_service.dart';
 import 'package:frontend/widgets/typography/content.dart';
 import 'package:frontend/widgets/typography/heading.dart';
 import 'package:frontend/widgets/typography/subheading.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:frontend/utils/generate_password.dart';
@@ -19,6 +21,33 @@ class _GeneratePasswordState extends State<GeneratePassword> {
   String label = "";
   String password = "";
   int passwordLength = 10;
+  bool isModalClose = false;
+
+  void savePaswordHandller() async {
+    if (label.length < 2) {
+      Get.snackbar(
+        "Validation Error",
+        "Label length Must be greater than 2 chars.",
+        backgroundColor: Colors.white,
+      );
+      return;
+    }
+    bool isSaved = await PasswordService().save(label, password);
+    if (isSaved) {
+      Get.snackbar(
+        "Success",
+        "Password Successfully Assigned",
+        backgroundColor: Colors.white,
+      );
+      Get.toNamed("/home");
+    } else {
+      Get.snackbar(
+        "Error",
+        "Something Went Wrong! Try Again",
+        backgroundColor: Colors.white,
+      );
+    }
+  }
 
   void onSavePassword(BuildContext context) {
     showModalBottomSheet(
@@ -46,9 +75,7 @@ class _GeneratePasswordState extends State<GeneratePassword> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {
-                      //todo
-                    },
+                    onPressed: savePaswordHandller,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Content(
