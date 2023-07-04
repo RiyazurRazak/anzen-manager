@@ -563,3 +563,13 @@ VALUES (N'20230622141101_initial', N'7.0.7');
 2023-07-04T20:10:15.3606799+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
 2023-07-04T20:10:15.3656747+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
 2023-07-04T20:10:15.3689152+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-07-04T20:35:09.3102539+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-07-04T20:35:09.3142552+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-07-04T20:35:09.3243258+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-07-04T20:35:09.3282942+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-07-04T20:35:09.3301606+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\
+2023-07-04T20:36:18.2833814+05:30	INFO	[backend.Controller.PasswordController]	[0]	Return labels of the device
+2023-07-04T20:36:22.8604285+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (435ms) [Parameters=[@__identifier_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Label], [p].[Id]
+FROM [Passwords] AS [p]
+WHERE [p].[DeviceId] = @__identifier_0
