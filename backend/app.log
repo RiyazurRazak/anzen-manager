@@ -520,3 +520,46 @@ WHERE [Identifier] = @p0;
 SELECT [p].[Label], [p].[Id]
 FROM [Passwords] AS [p]
 WHERE [p].[DeviceId] = @__identifier_0
+2023-07-04T20:02:51.5099988+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (273ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+2023-07-04T20:02:51.8005689+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (271ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2023-07-04T20:02:52.0552008+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (254ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+2023-07-04T20:02:52.4195315+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (258ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2023-07-04T20:02:52.7349560+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (314ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+2023-07-04T20:02:53.0364961+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (301ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2023-07-04T20:02:53.3173275+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (279ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2023-07-04T20:02:53.3545440+05:30	INFO	[Microsoft.EntityFrameworkCore.Migrations]	[Microsoft.EntityFrameworkCore.Migrations.MigrationApplying]	Applying migration '20230622141101_initial'.
+2023-07-04T20:02:54.0456566+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (253ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Devices] (
+    [Identifier] nvarchar(450) NOT NULL,
+    [Model] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Devices] PRIMARY KEY ([Identifier])
+);
+2023-07-04T20:02:54.2985169+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (252ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Passwords] (
+    [Id] nvarchar(450) NOT NULL,
+    [DeviceId] nvarchar(max) NOT NULL,
+    [Cypher] nvarchar(max) NOT NULL,
+    [Label] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Passwords] PRIMARY KEY ([Id])
+);
+2023-07-04T20:02:54.7944378+05:30	INFO	[Microsoft.EntityFrameworkCore.Database.Command]	[Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted]	Executed DbCommand (496ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20230622141101_initial', N'7.0.7');
+2023-07-04T20:10:15.3386436+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://0.0.0.0:7229
+2023-07-04T20:10:15.3443174+05:30	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://0.0.0.0:5092
+2023-07-04T20:10:15.3606799+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2023-07-04T20:10:15.3656747+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2023-07-04T20:10:15.3689152+05:30	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\Hp\Documents\prograd\anzen-manager\backend\

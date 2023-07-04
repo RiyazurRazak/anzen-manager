@@ -2,6 +2,9 @@ using backend.Data;
 using backend.Hubs;
 using Microsoft.EntityFrameworkCore;
 using StackExchange.Redis;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using Azure.Core;
 
 namespace backend
 {
@@ -11,10 +14,26 @@ namespace backend
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddDbContext<ApplicationDbContext>(options => 
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DB")));
+            SecretClientOptions options = new SecretClientOptions()
+            {
+                Retry =
+                {
+                    Delay= TimeSpan.FromSeconds(2),
+                    MaxDelay = TimeSpan.FromSeconds(16),
+                    MaxRetries = 5,
+                    Mode = RetryMode.Exponential
+                }
+            };
+            var client = new SecretClient(new Uri("https://api-anzen.vault.azure.net/"), new DefaultAzureCredential(), options);
 
-            builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("localhost"));
+            KeyVaultSecret sqlDB = client.GetSecret("DB-CONNECTION-STRING");
+            KeyVaultSecret redisDB = client.GetSecret("REDIS-CONNECTION-STRING");
+
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(sqlDB.Value));
+
+            builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisDB.Value));
 
             builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddFile("app.log", append: true));
             builder.Services.AddCors(options =>
