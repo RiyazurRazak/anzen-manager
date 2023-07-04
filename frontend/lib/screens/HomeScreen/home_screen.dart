@@ -93,7 +93,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed("/add-device");
+        },
         icon: const Icon(
           CupertinoIcons.add,
         ),
