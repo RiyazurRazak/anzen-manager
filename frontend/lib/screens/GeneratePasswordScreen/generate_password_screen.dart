@@ -110,7 +110,7 @@ class _GeneratePasswordState extends State<GeneratePassword> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Heading(
-                  value: "Create Unique Password",
+                  value: "Create Password",
                 ),
                 const SizedBox(
                   height: 24,
@@ -118,7 +118,7 @@ class _GeneratePasswordState extends State<GeneratePassword> {
                 Center(
                   child: Lottie.network(
                     "https://assets9.lottiefiles.com/packages/lf20_FGBAVxRGoS.json",
-                    height: 80,
+                    height: 70,
                     fit: BoxFit.fitHeight,
                   ),
                 ),
