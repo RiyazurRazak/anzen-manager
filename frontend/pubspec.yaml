@@ -49,6 +49,7 @@ dependencies:
   signalr_netcore: ^0.1.7+2-nullsafety.3
   dio: ^5.2.1+1
   fast_rsa: ^3.5.7
+  azlistview: ^2.0.0
 
 dev_dependencies:
   flutter_test:

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/constants/app_colors.dart';
 import 'package:frontend/widgets/typography/content.dart';
 import 'package:frontend/widgets/typography/subheading.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class DeviceCard extends StatefulWidget {
@@ -35,7 +36,9 @@ class _DeviceCardState extends State<DeviceCard> {
     super.initState();
   }
 
-  void onTapHandller() {}
+  void onTapHandller() {
+    Get.toNamed("/passwords");
+  }
 
   @override
   Widget build(BuildContext context) {
