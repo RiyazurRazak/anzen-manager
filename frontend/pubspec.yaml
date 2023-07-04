@@ -50,6 +50,7 @@ dependencies:
   dio: ^5.2.1+1
   fast_rsa: ^3.5.7
   azlistview: ^2.0.0
+  flutter_windowmanager: ^0.2.0
 
 dev_dependencies:
   flutter_test:

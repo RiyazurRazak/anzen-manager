@@ -59,10 +59,10 @@ class _SplashScreenState extends State<SplashScreen> {
         stringPool += info.brand;
         stringPool += info.product;
         stringPool += info.display;
-        bool isRegistered = await AccountService().register(id, info.model);
-        if (!isRegistered) {
-          throw Error();
-        }
+        // bool isRegistered = await AccountService().register(id, info.model);
+        // if (!isRegistered) {
+        //   throw Error();
+        // }
         box.put("name", info.model);
         var aesKey = _generateSymmetricKey(stringPool);
         SecureStorage().write("aesKey", aesKey);
