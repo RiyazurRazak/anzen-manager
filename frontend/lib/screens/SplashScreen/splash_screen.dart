@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:frontend/constants/app_colors.dart';
 import 'package:frontend/constants/storage_keys.dart';
+import 'package:frontend/services/api/account_service.dart';
 import 'package:frontend/services/storage/secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
@@ -31,31 +32,45 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _initApplication(Box box) async {
-    var uuid = const Uuid();
-    box.put("deviceId", uuid.v4());
-    final deviceInfoPlugin = DeviceInfoPlugin();
-    if (Platform.isIOS) {
-      final info = await deviceInfoPlugin.iosInfo;
-      String stringPool = "";
-      stringPool += info.identifierForVendor!;
-      stringPool += info.name;
-      stringPool += info.localizedModel;
-      stringPool += info.systemName;
-      stringPool += info.systemVersion;
-      box.put("name", info.name);
-      var aesKey = _generateSymmetricKey(stringPool);
-      SecureStorage().write("aesKey", aesKey);
-    } else if (Platform.isAndroid) {
-      final info = await deviceInfoPlugin.androidInfo;
-      String stringPool = "";
-      stringPool += info.board;
-      stringPool += info.id;
-      stringPool += info.brand;
-      stringPool += info.product;
-      stringPool += info.display;
-      box.put("name", info.model);
-      var aesKey = _generateSymmetricKey(stringPool);
-      SecureStorage().write("aesKey", aesKey);
+    try {
+      var uuid = const Uuid();
+      var id = uuid.v4();
+      final deviceInfoPlugin = DeviceInfoPlugin();
+      if (Platform.isIOS) {
+        final info = await deviceInfoPlugin.iosInfo;
+        String stringPool = "";
+        stringPool += info.identifierForVendor!;
+        stringPool += info.name;
+        stringPool += info.localizedModel;
+        stringPool += info.systemName;
+        stringPool += info.systemVersion;
+        bool isRegistered = await AccountService().register(id, info.name);
+        if (!isRegistered) {
+          throw Error();
+        }
+        box.put("name", info.name);
+        var aesKey = _generateSymmetricKey(stringPool);
+        SecureStorage().write("aesKey", aesKey);
+      } else if (Platform.isAndroid) {
+        final info = await deviceInfoPlugin.androidInfo;
+        String stringPool = "";
+        stringPool += info.board;
+        stringPool += info.id;
+        stringPool += info.brand;
+        stringPool += info.product;
+        stringPool += info.display;
+        bool isRegistered = await AccountService().register(id, info.model);
+        if (!isRegistered) {
+          throw Error();
+        }
+        box.put("name", info.model);
+        var aesKey = _generateSymmetricKey(stringPool);
+        SecureStorage().write("aesKey", aesKey);
+      }
+      box.put("deviceId", id);
+    } catch (err) {
+      //TODO:
+      exit(0);
     }
   }
 
