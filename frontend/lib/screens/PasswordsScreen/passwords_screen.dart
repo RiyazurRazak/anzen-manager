@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:frontend/constants/app_colors.dart';
 import 'package:frontend/services/api/password_service.dart';
 import 'package:frontend/widgets/typography/content.dart';
-import 'package:frontend/widgets/typography/subheading.dart';
 import 'package:get/get.dart';
 
 class _AZItem extends ISuspensionBean {
@@ -37,52 +36,31 @@ class _PasswordScreenState extends State<PasswordScreen> {
   List<_AZItem> passwords = [];
 
   void _getPasswords() async {
-    // var data = await PasswordService().getAllLabels();
-    // if (data) {
-    var items = [
-      "azure",
-      "dribble",
-      "aws",
-      "instagram",
-      "github",
-      "facebook",
-      "gmail",
-      "gcp",
-      "reddit",
-      "dfadg",
-      'adjfhadsf',
-      "jsfhduasd",
-      "ldjfasd",
-      "odfasd",
-      "pfgadsger",
-      "ajhfuiadhf",
-      "iofdaewhyf",
-      "tasfasd",
-      "kdfgiao"
-    ]
-        .map(
-          (item) => _AZItem(
-            title: item,
-            tag: item[0].toUpperCase(),
-            icn:
-                "https://api.iconify.design/solar/lock-password-bold-duotone.svg?height=120",
-            id: "",
-          ),
-        )
-        .toList();
-    SuspensionUtil.sortListBySuspensionTag(items);
-    setState(() {
-      passwords = items;
-      isLoading = false;
-    });
-    //TODO: Format data
-    // } else {
-    //   Get.snackbar(
-    //     "Error",
-    //     "Something Went Wrong! Try Again",
-    //     backgroundColor: Colors.white,
-    //   );
-    // }
+    var data = await PasswordService().getAllLabels();
+    if (data) {
+      var items = data
+          .map(
+            (item) => _AZItem(
+              title: item,
+              tag: item[0].toUpperCase(),
+              icn:
+                  "https://api.iconify.design/solar/lock-password-bold-duotone.svg?height=120",
+              id: "",
+            ),
+          )
+          .toList();
+      SuspensionUtil.sortListBySuspensionTag(items);
+      setState(() {
+        passwords = items;
+        isLoading = false;
+      });
+    } else {
+      Get.snackbar(
+        "Error",
+        "Something Went Wrong! Try Again",
+        backgroundColor: Colors.white,
+      );
+    }
   }
 
   @override
