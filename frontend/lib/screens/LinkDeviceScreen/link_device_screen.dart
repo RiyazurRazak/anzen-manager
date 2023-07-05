@@ -30,6 +30,14 @@ class _LinkDeviceScreenState extends State<LinkDeviceScreen> {
   String? publicKey;
 
   void _saveToDb(String label) async {
+    if (label.length < 2) {
+      Get.snackbar(
+        "Validation Error",
+        "Device label must be greater of 2 chars",
+        backgroundColor: Colors.white,
+      );
+      return;
+    }
     var box = await Hive.openBox<LinkedDevice>(StorageKeys.LINKED_DEVICES);
     LinkedDevice device = LinkedDevice(
       label: label,
