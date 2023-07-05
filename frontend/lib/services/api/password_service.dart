@@ -4,6 +4,7 @@ import "package:frontend/constants/storage_keys.dart";
 import "package:frontend/services/storage/secure_storage.dart";
 import 'package:encrypt/encrypt.dart';
 import "package:hive_flutter/hive_flutter.dart";
+import "package:sentry_flutter/sentry_flutter.dart";
 
 class PasswordService {
   final Dio _dio = Dio();
@@ -16,7 +17,11 @@ class PasswordService {
       Hive.close();
       final response = await _dio.get("${ApiUrls.baseUrl}/passwords/$deviceId");
       return response.data;
-    } catch (err) {
+    } catch (exception, stackTrace) {
+      Sentry.captureException(
+        exception,
+        stackTrace: stackTrace,
+      );
       return false;
     }
   }
@@ -25,7 +30,11 @@ class PasswordService {
     try {
       final response = await _dio.get("${ApiUrls.baseUrl}/password/$id");
       return response.data;
-    } catch (err) {
+    } catch (exception, stackTrace) {
+      Sentry.captureException(
+        exception,
+        stackTrace: stackTrace,
+      );
       return false;
     }
   }
@@ -46,7 +55,11 @@ class PasswordService {
         data: {"deviceId": deviceId, "label": label, "cypher": cypher},
       );
       return true;
-    } catch (err) {
+    } catch (exception, stackTrace) {
+      Sentry.captureException(
+        exception,
+        stackTrace: stackTrace,
+      );
       return false;
     }
   }

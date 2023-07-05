@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/constants/api_urls.dart';
 import 'package:frontend/constants/app_colors.dart';
 import 'package:frontend/routes.dart';
 import 'package:frontend/screens/SplashScreen/splash_screen.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 void main() async {
   await Hive.initFlutter();
-  runApp(const MyApp());
+  await SentryFlutter.init(
+    (options) {
+      options.dsn = ApiUrls.sentryDsn;
+      options.tracesSampleRate = 1.0;
+    },
+    appRunner: () => runApp(const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {

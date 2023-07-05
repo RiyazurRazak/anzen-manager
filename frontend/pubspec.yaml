@@ -52,6 +52,7 @@ dependencies:
   azlistview: ^2.0.0
   flutter_windowmanager: ^0.2.0
   qr_code_scanner: ^1.0.1
+  sentry_flutter: ^7.8.0
 
 dev_dependencies:
   flutter_test:

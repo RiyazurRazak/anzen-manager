@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:uuid/uuid.dart';
 import 'package:frontend/constants/lottie_links.dart';
 
@@ -59,17 +60,20 @@ class _SplashScreenState extends State<SplashScreen> {
         stringPool += info.brand;
         stringPool += info.product;
         stringPool += info.display;
-        // bool isRegistered = await AccountService().register(id, info.model);
-        // if (!isRegistered) {
-        //   throw Error();
-        // }
+        bool isRegistered = await AccountService().register(id, info.model);
+        if (!isRegistered) {
+          throw Error();
+        }
         box.put("name", info.model);
         var aesKey = _generateSymmetricKey(stringPool);
         SecureStorage().write("aesKey", aesKey);
       }
       box.put("deviceId", id);
-    } catch (err) {
-      //TODO:
+    } catch (exception, stackTrace) {
+      Sentry.captureException(
+        exception,
+        stackTrace: stackTrace,
+      );
       exit(0);
     }
   }
