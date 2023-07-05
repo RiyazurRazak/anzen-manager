@@ -30,7 +30,7 @@ namespace backend.Hubs
             return base.OnDisconnectedAsync(exception);
         }
 
-        public async Task OnLink(string extensionId, string deviceName)
+        public async Task OnLink(string extensionId, string deviceName, string deviceId)
         {
             var extensionConnectionId = _database.StringGet(extensionId);
             if (!extensionConnectionId.HasValue)
@@ -38,7 +38,7 @@ namespace backend.Hubs
                 await Clients.Caller.SendAsync("OnLink", "404");
                 return;
             }
-            await Clients.Client((string)extensionConnectionId).SendAsync("OnLink", deviceName);
+            await Clients.Client((string)extensionConnectionId).SendAsync("OnLink", deviceName, deviceId);
         }
 
         public async Task VerifyHandshake(string extensionId, string handshakeCypher)
@@ -51,6 +51,7 @@ namespace backend.Hubs
             }
             await Clients.Client(extensionConnectionId).SendAsync("VerifyHandshake", handshakeCypher);
         }
+
 
     }
 }
