@@ -1,3 +1,3 @@
 class StorageKeys {
-  static String INIT_STORAGE = "anzen_init";
+  static String INIT_STORAGE = "anzen_user_collection";
 }
