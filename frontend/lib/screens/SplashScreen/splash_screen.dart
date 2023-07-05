@@ -69,6 +69,7 @@ class _SplashScreenState extends State<SplashScreen> {
         SecureStorage().write("aesKey", aesKey);
       }
       box.put("deviceId", id);
+      Get.offNamed("/home");
     } catch (exception, stackTrace) {
       Sentry.captureException(
         exception,
@@ -84,8 +85,9 @@ class _SplashScreenState extends State<SplashScreen> {
     var deviceId = initBox.get("deviceId");
     if (deviceId == null) {
       _initApplication(initBox);
+    } else {
+      Get.offNamed("/home");
     }
-    Get.offNamed("/home");
   }
 
   @override
