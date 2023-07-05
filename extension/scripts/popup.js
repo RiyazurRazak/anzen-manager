@@ -4,7 +4,7 @@ const registrationTemplate = document.getElementById("anzen-registration");
 const loggedInTemplate = document.getElementById("anzen-loggedin");
 const keyShareTemplate = document.getElementById("anzen-key-share");
 let connection = null;
-const baseUrl = "https://192.168.0.102:7229/hubs";
+const baseUrl = "https://api-anzen.azurewebsites.net/hubs";
 
 /**
  * connect to the signalr server and listen to the methods

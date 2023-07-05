@@ -9,7 +9,7 @@ const port = chrome.runtime.connect({ name: "anzen" });
  * @param {string} id - unique extension id
  */
 const connectToServer = async (id) => {
-  const url = `https://192.168.0.102:7229/hubs/transport?amId=${id}`;
+  const url = `https://api-anzen.azurewebsites.net/hubs/transport?amId=${id}`;
 
   try {
     connection = new signalR.HubConnectionBuilder()
