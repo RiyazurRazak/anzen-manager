@@ -52,6 +52,17 @@ namespace backend.Hubs
             await Clients.Client(extensionConnectionId).SendAsync("VerifyHandshake", handshakeCypher);
         }
 
+        public async Task OnSuccessHandshake(string deviceId)
+        {
+            var deviceConnectionId = _database.StringGet(deviceId);
+            if (!deviceConnectionId.HasValue)
+            {
+                await Clients.Caller.SendAsync("OnSuccessHandshake", "404");
+                return;
+            }
+            await Clients.Client(deviceConnectionId).SendAsync("OnSuccessHandshake", true);
+
+        }
 
     }
 }
