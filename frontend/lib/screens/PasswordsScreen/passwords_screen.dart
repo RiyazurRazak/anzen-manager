@@ -39,6 +39,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
   bool isLoading = true;
   List<_AZItem> passwords = [];
   bool isUpdating = false;
+  final requester = Get.arguments;
 
   void _getPasswords() async {
     setState(() {
