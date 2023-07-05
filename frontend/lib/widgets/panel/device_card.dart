@@ -37,7 +37,7 @@ class _DeviceCardState extends State<DeviceCard> {
   }
 
   void onTapHandller() {
-    Get.toNamed("/passwords", arguments: "mobile");
+    Get.toNamed("/passwords", arguments: ["MBL"]);
   }
 
   @override

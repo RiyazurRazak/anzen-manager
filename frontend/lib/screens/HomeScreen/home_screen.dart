@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/constants/app_colors.dart';
+import 'package:frontend/constants/storage_keys.dart';
+import 'package:frontend/models/hive/linked_devices.dart';
 import 'package:frontend/widgets/panel/device_card.dart';
 import 'package:frontend/widgets/panel/extension_card.dart';
 import 'package:frontend/widgets/typography/content.dart';
 import 'package:frontend/widgets/typography/heading.dart';
 import 'package:frontend/widgets/typography/subheading.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,6 +25,22 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void onActionBtnTapHandller() {
     Get.toNamed("/generate-password");
+  }
+
+  void _initBox() async {
+    await Hive.openBox(StorageKeys.LINKED_DEVICES);
+  }
+
+  @override
+  void initState() {
+    _initBox();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    Hive.close();
+    super.dispose();
   }
 
   @override
@@ -71,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,13 +98,29 @@ class _HomeScreenState extends State<HomeScreen> {
                 Heading(
                   value: "Keep Your\nLife Safe",
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 SubHeading(value: "My Linked Devices"),
-                SizedBox(height: 24),
-                DeviceCard(),
-                ExtensionCard(
-                  label: "Label",
-                  datetime: "22/03/22",
+                const SizedBox(height: 24),
+                const DeviceCard(),
+                ValueListenableBuilder(
+                  valueListenable:
+                      Hive.box<LinkedDevice>(StorageKeys.LINKED_DEVICES)
+                          .listenable(),
+                  builder: (context, box, widget) {
+                    return ListView.builder(
+                      itemCount: box.length,
+                      itemBuilder: (context, index) {
+                        var device = box.getAt(index);
+                        return ExtensionCard(
+                          label: device!.label,
+                          datetime:
+                              "${device.linkedOn.day}/${device.linkedOn.month}/${device.linkedOn.year}",
+                          publicKey: device.publicKey,
+                          id: device.id,
+                        );
+                      },
+                    );
+                  },
                 ),
               ],
             ),

@@ -2,14 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/widgets/typography/content.dart';
 import 'package:frontend/widgets/typography/subheading.dart';
+import 'package:get/get.dart';
 
 class ExtensionCard extends StatelessWidget {
   final String label;
   final String datetime;
-  const ExtensionCard({super.key, required this.label, required this.datetime});
+  final String publicKey;
+  final String id;
+  const ExtensionCard({
+    super.key,
+    required this.label,
+    required this.datetime,
+    required this.publicKey,
+    required this.id,
+  });
 
   void onTapHandller() {
-    //TODO: navigate to password screen
+    Get.toNamed(
+      "/passwords",
+      arguments: ["EXT", id, publicKey],
+    );
   }
 
   @override

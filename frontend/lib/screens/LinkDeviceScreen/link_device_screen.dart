@@ -4,7 +4,9 @@ import 'package:fast_rsa/fast_rsa.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/constants/app_colors.dart';
 import 'package:frontend/constants/storage_keys.dart';
+import 'package:frontend/models/hive/linked_devices.dart';
 import 'package:frontend/services/signalr/connection_hub.dart';
+import 'package:frontend/widgets/typography/content.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -27,22 +29,85 @@ class _LinkDeviceScreenState extends State<LinkDeviceScreen> {
   HubConnection? hub;
   String? publicKey;
 
+  void _saveToDb(String label) async {
+    var box = await Hive.openBox<LinkedDevice>(StorageKeys.LINKED_DEVICES);
+    LinkedDevice device = LinkedDevice(
+      label: label,
+      id: extensionId!,
+      publicKey: publicKey!,
+      linkedOn: DateTime.now(),
+    );
+    await box.add(device);
+    Hive.close();
+    Get.snackbar(
+      "Success",
+      "Device Successfully added",
+      backgroundColor: Colors.white,
+    );
+    Get.toNamed("/home");
+  }
+
   void _initHub() async {
     HubConnection hub = await ConnectionHub().start();
     setState(() {
       this.hub = hub;
     });
-    hub.on("onLink", (arguments) {
-      if (arguments!.length == 1) {
-        if (arguments[0] == "404") {
-          Get.snackbar(
-            "Error",
-            "Extension is offline! or invalid qrcode",
-            backgroundColor: Colors.white,
-          );
+    hub.on(
+      "onLink",
+      (arguments) {
+        if (arguments!.length == 1) {
+          if (arguments[0] == "404") {
+            Get.snackbar(
+              "Error",
+              "Extension is offline! or invalid qrcode",
+              backgroundColor: Colors.white,
+            );
+          }
         }
-      }
-    });
+      },
+    );
+    hub.on(
+      "OnSuccessHandshake",
+      (arguments) {
+        var labelController = TextEditingController();
+        showBottomSheet(
+          enableDrag: true,
+          backgroundColor: AppColors.primaryBackground,
+          elevation: 50,
+          context: context,
+          builder: (BuildContext context) {
+            return Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: SizedBox(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.30,
+                child: Column(
+                  children: [
+                    Content(value: "Add Label To this device"),
+                    TextField(
+                      controller: labelController,
+                      decoration: const InputDecoration(
+                        helperText: "Device Label To Identify",
+                        hintText: "My Macbook air (chrome)",
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    ElevatedButton(
+                      onPressed: () {
+                        _saveToDb(labelController.value.text);
+                      },
+                      child: Content(
+                        value: "Add",
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -72,12 +137,13 @@ class _LinkDeviceScreenState extends State<LinkDeviceScreen> {
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       body: SafeArea(
-          child: Stack(
-        alignment: Alignment.center,
-        children: [
-          buildQRView(context),
-        ],
-      )),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            buildQRView(context),
+          ],
+        ),
+      ),
     );
   }
 
