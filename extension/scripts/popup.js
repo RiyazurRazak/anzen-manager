@@ -7,6 +7,13 @@ let connection = null;
 const baseUrl = "https://api-anzen.azurewebsites.net/hubs";
 
 /**
+ * convert string to arraybuffere
+ * @param {string} base64String - string to convert
+ */
+const fromBase64 = (base64String) =>
+  Uint8Array.from(atob(base64String), (c) => c.charCodeAt(0));
+
+/**
  * connect to the signalr server and listen to the methods
  * @param {string} id - unique extension id
  */
@@ -43,9 +50,7 @@ const connectToServer = async (id) => {
  */
 const verifyHandshake = async (encodeText) => {
   try {
-    const encoder = new TextEncoder();
     const decoder = new TextDecoder();
-    const payload = encoder.encode(encodeText);
     const { anzenCode } = await chrome.storage.local.get("anzenCode");
     const { anzenKey } = await chrome.storage.local.get("anzenKey");
     const privateKey = await window.crypto.subtle.importKey(
@@ -58,13 +63,15 @@ const verifyHandshake = async (encodeText) => {
       true,
       ["decrypt"]
     );
+
     const decryptToken = await window.crypto.subtle.decrypt(
       {
         name: "RSA-OAEP",
       },
       privateKey,
-      payload
+      fromBase64(encodeText)
     );
+
     if (decoder.decode(decryptToken) === anzenCode) {
       await chrome.storage.local.set({ isLinked: true });
       const { deviceId } = await chrome.storage.local.get("deviceId");
@@ -75,7 +82,7 @@ const verifyHandshake = async (encodeText) => {
       keysGeneration();
     }
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 };
 
