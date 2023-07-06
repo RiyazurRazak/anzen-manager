@@ -1,5 +1,9 @@
 # Anzen Manager (Combine of Passkey and Password Manger)
 
+## Block Diagram
+
+![azure block diagram](https://res.cloudinary.com/dqf7aonc2/image/upload/v1688650665/Blank_diagram_ifa9f8.png)
+
 ## Snapshots (few screens from the application)
 
 ![extenion after link](https://res.cloudinary.com/dqf7aonc2/image/upload/v1688649498/Screenshot_2023-07-06_at_6.07.56_PM_kjyzew.png)
