@@ -3,13 +3,21 @@ let connection = null;
 let passwordNode = null;
 // port for communication to the service worker
 const port = chrome.runtime.connect({ name: "anzen" });
+const baseUrl = "https://api-anzen.azurewebsites.net/hubs";
+
+/**
+ * convert string to arraybuffere
+ * @param {string} base64String - string to convert
+ */
+const fromBase64 = (base64String) =>
+  Uint8Array.from(atob(base64String), (c) => c.charCodeAt(0));
 
 /**
  * connect to the signalr server and listen to the methods
  * @param {string} id - unique extension id
  */
 const connectToServer = async (id) => {
-  const url = `https://api-anzen.azurewebsites.net/hubs/transport?amId=${id}`;
+  const url = `${baseUrl}/transport?amId=${id}`;
 
   try {
     connection = new signalR.HubConnectionBuilder()
@@ -22,7 +30,9 @@ const connectToServer = async (id) => {
 
     await connection.start();
 
-    connection.on("GetCypherValue", (result) => {});
+    connection.on("GetCypherValue", (result) => {
+      port.postMessage({ type: "DECRYPT", value: result });
+    });
 
     await chrome.runtime.sendMessage({ type: "ADD_BADGE" });
   } catch (err) {
@@ -39,11 +49,41 @@ const findDomNodes = () => {
     if (!Boolean(passwordNode.getAttribute("aria-hidden"))) {
       isFound = true;
       port.postMessage({ type: "INIT" });
-      port.onMessage.addListener(function (res) {
+      port.onMessage.addListener(async function (res) {
         if (res.type === "INIT") {
           const id = res.msg?.anzenId;
           if (id) {
             connectToServer(id);
+          }
+        }
+        if (res.type === "DECRYPT") {
+          if (res.key) {
+            const decoder = new TextDecoder();
+            const privateKey = await window.crypto.subtle.importKey(
+              "jwk",
+              JSON.parse(res.key),
+              {
+                name: "RSA-OAEP",
+                hash: "SHA-256",
+              },
+              true,
+              ["decrypt"]
+            );
+            try {
+              const decryptToken = await window.crypto.subtle.decrypt(
+                {
+                  name: "RSA-OAEP",
+                },
+                privateKey,
+                fromBase64(res.value)
+              );
+              const password = decoder.decode(decryptToken);
+              passwordNode.value = password;
+            } catch (err) {
+              alert("Invalid Credentials!");
+            }
+          } else {
+            alert("Invalid Credentials!");
           }
         }
       });
