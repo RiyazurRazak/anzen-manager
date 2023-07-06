@@ -4,9 +4,7 @@ import 'package:fast_rsa/fast_rsa.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/constants/app_colors.dart';
 import 'package:frontend/constants/storage_keys.dart';
-import 'package:frontend/models/hive/linked_devices.dart';
 import 'package:frontend/services/signalr/connection_hub.dart';
-import 'package:frontend/widgets/typography/content.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -28,32 +26,6 @@ class _LinkDeviceScreenState extends State<LinkDeviceScreen> {
   String? handshakeSecret = "";
   HubConnection? hub;
   String? publicKey;
-
-  void _saveToDb(String label) async {
-    if (label.length < 2) {
-      Get.snackbar(
-        "Validation Error",
-        "Device label must be greater of 2 chars",
-        backgroundColor: Colors.white,
-      );
-      return;
-    }
-    var box = await Hive.openBox<LinkedDevice>(StorageKeys.LINKED_DEVICES);
-    LinkedDevice device = LinkedDevice(
-      label: label,
-      id: extensionId!,
-      publicKey: publicKey!,
-      linkedOn: DateTime.now(),
-    );
-    await box.add(device);
-    Hive.close();
-    Get.snackbar(
-      "Success",
-      "Device Successfully added",
-      backgroundColor: Colors.white,
-    );
-    Get.toNamed("/home");
-  }
 
   void _initHub() async {
     HubConnection hub = await ConnectionHub().start();
@@ -77,43 +49,7 @@ class _LinkDeviceScreenState extends State<LinkDeviceScreen> {
     hub.on(
       "OnSuccessHandshake",
       (arguments) {
-        var labelController = TextEditingController();
-        showBottomSheet(
-          enableDrag: true,
-          backgroundColor: AppColors.primaryBackground,
-          elevation: 50,
-          context: context,
-          builder: (BuildContext context) {
-            return Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: SizedBox(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.30,
-                child: Column(
-                  children: [
-                    Content(value: "Add Label To this device"),
-                    TextField(
-                      controller: labelController,
-                      decoration: const InputDecoration(
-                        helperText: "Device Label To Identify",
-                        hintText: "My Macbook air (chrome)",
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    ElevatedButton(
-                      onPressed: () {
-                        _saveToDb(labelController.value.text);
-                      },
-                      child: Content(
-                        value: "Add",
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            );
-          },
-        );
+        Get.toNamed("/label", arguments: [extensionId, publicKey]);
       },
     );
   }
@@ -195,23 +131,35 @@ class _LinkDeviceScreenState extends State<LinkDeviceScreen> {
               args: <Object>["${event.code}", "$deviceName", "$deviceId"]);
           await controller.resumeCamera();
         } else if (stage == "HANDSHAKE") {
-          var data = jsonDecode(event.code!);
-          if (data.containsKey("c") && data.containsKey("v")) {
-            var publicKey = data["c"];
-            var verifySign = data["v"];
-            var key = await RSA.convertJWKToPublicKey(publicKey, "");
-            var cypher =
-                await RSA.encryptOAEP(verifySign, "", Hash.SHA256, key);
-            setState(() {
-              this.publicKey = publicKey;
-            });
-            hub!.invoke("VerifyHandshake", args: [cypher]);
-            Get.snackbar(
-              "Handshake Verification",
-              "Verification process initialized.",
-              backgroundColor: Colors.white,
-            );
-          } else {
+          try {
+            var data = jsonDecode(event.code!);
+            if (data.containsKey("c") && data.containsKey("v")) {
+              var rawPublicKey = data["c"];
+              var verifySign = data["v"];
+              var publicKey = {};
+              publicKey["kty"] = rawPublicKey["kty"];
+              publicKey["e"] = rawPublicKey["e"];
+              publicKey["n"] = rawPublicKey["n"];
+              var key = await RSA.convertJWKToPublicKey(publicKey, "");
+              var cypher =
+                  await RSA.encryptOAEP(verifySign, "", Hash.SHA256, key);
+              setState(() {
+                this.publicKey = key;
+              });
+              hub!.invoke("VerifyHandshake", args: [extensionId!, cypher]);
+              Get.snackbar(
+                "Handshake Verification",
+                "Verification process initialized.",
+                backgroundColor: Colors.white,
+              );
+            } else {
+              Get.snackbar(
+                "Error",
+                "invalid qr code",
+                backgroundColor: Colors.white,
+              );
+            }
+          } catch (err) {
             Get.snackbar(
               "Error",
               "invalid qr code",

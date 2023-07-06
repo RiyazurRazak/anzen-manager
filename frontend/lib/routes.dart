@@ -1,6 +1,7 @@
 import 'package:frontend/screens/AboutScreen/about_screen.dart';
 import 'package:frontend/screens/GeneratePasswordScreen/generate_password_screen.dart';
 import 'package:frontend/screens/HomeScreen/home_screen.dart';
+import 'package:frontend/screens/LinkDeviceScreen/label_screen.dart';
 import 'package:frontend/screens/LinkDeviceScreen/link_device_screen.dart';
 import 'package:frontend/screens/PasswordsScreen/passwords_screen.dart';
 import 'package:frontend/screens/SplashScreen/splash_screen.dart';
@@ -30,5 +31,9 @@ List<GetPage> routes = [
   GetPage(
     name: "/add-device",
     page: () => const LinkDeviceScreen(),
+  ),
+  GetPage(
+    name: "/label",
+    page: () => const LabelScreen(),
   ),
 ];
