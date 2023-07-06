@@ -11,7 +11,6 @@ class TransportHub {
     await Hive.openBox(StorageKeys.INIT_STORAGE);
     final initBox = Hive.box(StorageKeys.INIT_STORAGE);
     final deviceId = initBox.get("deviceId");
-    Hive.close();
     hubConnection = HubConnectionBuilder()
         .withUrl(
           "${ApiUrls.hubUrl}/transport?amId=$deviceId",

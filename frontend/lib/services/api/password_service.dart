@@ -28,7 +28,6 @@ class PasswordService {
       await Hive.openBox(StorageKeys.INIT_STORAGE);
       final initBox = Hive.box(StorageKeys.INIT_STORAGE);
       final deviceId = initBox.get("deviceId");
-      Hive.close();
       final response = await _dio.get("${ApiUrls.baseUrl}/passwords/$deviceId");
       List<dynamic> jsonData = response.data as List<dynamic>;
       List<PasswordLabel> labels = [];
@@ -39,6 +38,7 @@ class PasswordService {
       }
       return labels;
     } catch (exception, stackTrace) {
+      print(exception);
       Sentry.captureException(
         exception,
         stackTrace: stackTrace,
@@ -65,7 +65,6 @@ class PasswordService {
       await Hive.openBox(StorageKeys.INIT_STORAGE);
       final initBox = Hive.box(StorageKeys.INIT_STORAGE);
       final deviceId = initBox.get("deviceId");
-      Hive.close();
       final aesKey = await SecureStorage().read("aesKey");
       final key = Key.fromUtf8(aesKey);
       final iv = IV.fromLength(16);

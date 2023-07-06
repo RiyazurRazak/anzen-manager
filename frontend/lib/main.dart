@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/constants/api_urls.dart';
 import 'package:frontend/constants/app_colors.dart';
+import 'package:frontend/constants/storage_keys.dart';
 import 'package:frontend/models/hive/linked_devices.dart';
 import 'package:frontend/routes.dart';
 import 'package:frontend/screens/SplashScreen/splash_screen.dart';
@@ -12,6 +13,8 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(LinkedDeviceAdapter());
+  await Hive.openBox(StorageKeys.INIT_STORAGE);
+  await Hive.openBox(StorageKeys.LINKED_DEVICES);
   await SentryFlutter.init(
     (options) {
       options.dsn = ApiUrls.sentryDsn;

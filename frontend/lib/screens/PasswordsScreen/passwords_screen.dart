@@ -71,7 +71,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
     } else {
       Get.snackbar(
         "Error",
-        "Something Went Wrong! Try Again",
+        "Something Went Wrong! Try Again Later",
         backgroundColor: Colors.white,
       );
     }

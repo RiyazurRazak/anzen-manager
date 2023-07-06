@@ -123,7 +123,6 @@ class _LinkDeviceScreenState extends State<LinkDeviceScreen> {
           final initBox = Hive.box(StorageKeys.INIT_STORAGE);
           final deviceId = initBox.get("deviceId");
           final deviceName = initBox.get("name");
-          Hive.close();
           setState(() {
             extensionId = event.code;
           });
