@@ -1,13 +1,16 @@
+import 'package:encrypt/encrypt.dart' as encrypt;
+import 'package:fast_rsa/fast_rsa.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:azlistview/azlistview.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:frontend/constants/app_colors.dart';
 import 'package:frontend/services/api/password_service.dart';
+import 'package:frontend/services/storage/secure_storage.dart';
 import 'package:frontend/widgets/typography/content.dart';
 import 'package:get/get.dart';
 import 'package:local_auth/local_auth.dart';
-
 import '../../models/api/v1/PasswordService/password_label_model.dart';
 
 class _AZItem extends ISuspensionBean {
@@ -192,6 +195,53 @@ class _PasswordScreenState extends State<PasswordScreen> {
     );
   }
 
+  void onPressHandller(_AZItem item) async {
+    var data = await PasswordService().get(item.id);
+    if (data != false) {
+      var cypherText = data["cypher"];
+      final LocalAuthentication auth = LocalAuthentication();
+      final bool didAuthenticate = await auth.authenticate(
+        localizedReason:
+            'Please authenticate to access your password for ${item.title}',
+      );
+      if (!didAuthenticate) {
+        Get.snackbar(
+          "Error",
+          "Authentication required for this process",
+          backgroundColor: Colors.white,
+        );
+        return;
+      }
+      final aesKey = await SecureStorage().read("aesKey");
+      final key = encrypt.Key.fromUtf8(aesKey);
+      final iv = encrypt.IV.fromLength(16);
+      final builder = encrypt.Encrypter(encrypt.AES(key));
+      final password = builder.decrypt64(cypherText, iv: iv);
+      if (Get.arguments[0] != "EXT") {
+        await Clipboard.setData(
+          ClipboardData(
+            text: password,
+          ),
+        );
+        Get.snackbar(
+          "Copied",
+          "Your password is copied to your clipboard",
+          backgroundColor: Colors.white,
+        );
+        return;
+      }
+      var cypher =
+          await RSA.encryptOAEP(password, "", Hash.SHA256, Get.arguments[2]);
+      //TODO: send with signalr
+    } else {
+      Get.snackbar(
+        "Error",
+        "Something Went Wrong! Try Again",
+        backgroundColor: Colors.white,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -259,7 +309,9 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         fit: BoxFit.fitHeight,
                         alignment: Alignment.center,
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        onPressHandller(data);
+                      },
                       onLongPress: () {
                         longPressHandller(context, data, index);
                       },
