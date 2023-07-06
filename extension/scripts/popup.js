@@ -4,7 +4,14 @@ const registrationTemplate = document.getElementById("anzen-registration");
 const loggedInTemplate = document.getElementById("anzen-loggedin");
 const keyShareTemplate = document.getElementById("anzen-key-share");
 let connection = null;
-const baseUrl = "https://192.168.0.102:7229/hubs";
+const baseUrl = "https://api-anzen.azurewebsites.net/hubs";
+
+/**
+ * convert string to arraybuffere
+ * @param {string} base64String - string to convert
+ */
+const fromBase64 = (base64String) =>
+  Uint8Array.from(atob(base64String), (c) => c.charCodeAt(0));
 
 /**
  * connect to the signalr server and listen to the methods
@@ -25,9 +32,9 @@ const connectToServer = async (id) => {
     await connection.start();
 
     // listen to the methods
-    connection.on("OnLink", async (result) => {
-      // store the mobile device name
-      await chrome.storage.local.set({ linkDevice: result });
+    connection.on("OnLink", async (deviceName, deviceId) => {
+      // store the mobile device name and device id
+      await chrome.storage.local.set({ linkDevice: deviceName, deviceId });
       keysGeneration();
     });
     connection.on("VerifyHandshake", verifyHandshake);
@@ -42,34 +49,40 @@ const connectToServer = async (id) => {
  * @param {string} encodedText - cypher text from the mobile app
  */
 const verifyHandshake = async (encodeText) => {
-  const encoder = new TextEncoder();
-  const decoder = new TextDecoder();
-  const payload = encoder.encode(encodeText);
-  const { anzenCode } = await chrome.storage.local.get("anzenCode");
-  const { anzenKey } = await chrome.storage.local.get("anzenKey");
-  const privateKey = await window.crypto.subtle.importKey(
-    "jwk",
-    JSON.parse(anzenKey),
-    {
-      name: "RSA-OAEP",
-      hash: "SHA-256",
-    },
-    true,
-    ["decrypt"]
-  );
-  const decryptToken = await window.crypto.subtle.decrypt(
-    {
-      name: "RSA-OAEP",
-    },
-    privateKey,
-    payload
-  );
-  if (decoder.decode(decryptToken) === anzenCode) {
-    await chrome.storage.local.set({ isLinked: true });
-    checkRegistrationStatus();
-  } else {
-    alert("Invalid Handshake Try Again");
-    keysGeneration();
+  try {
+    const decoder = new TextDecoder();
+    const { anzenCode } = await chrome.storage.local.get("anzenCode");
+    const { anzenKey } = await chrome.storage.local.get("anzenKey");
+    const privateKey = await window.crypto.subtle.importKey(
+      "jwk",
+      JSON.parse(anzenKey),
+      {
+        name: "RSA-OAEP",
+        hash: "SHA-256",
+      },
+      true,
+      ["decrypt"]
+    );
+
+    const decryptToken = await window.crypto.subtle.decrypt(
+      {
+        name: "RSA-OAEP",
+      },
+      privateKey,
+      fromBase64(encodeText)
+    );
+
+    if (decoder.decode(decryptToken) === anzenCode) {
+      await chrome.storage.local.set({ isLinked: true });
+      const { deviceId } = await chrome.storage.local.get("deviceId");
+      await connection.invoke("OnSuccessHandshake", deviceId);
+      checkRegistrationStatus();
+    } else {
+      alert("Invalid Handshake Try Again");
+      keysGeneration();
+    }
+  } catch (err) {
+    console.log(err);
   }
 };
 
@@ -141,7 +154,8 @@ const initializeRegistration = async () => {
 const checkRegistrationStatus = async () => {
   const { anzenId } = await chrome.storage.local.get("anzenId");
   const { linkDevice } = await chrome.storage.local.get("linkDevice");
-  if (anzenId && linkDevice) {
+  const { isLinked } = await chrome.storage.local.get("isLinked");
+  if (anzenId && linkDevice && isLinked) {
     linkedTitle.innerText = `Linked with ${linkDevice}`;
     content.innerHTML = "";
     content.appendChild(loggedInTemplate.content.cloneNode(true));

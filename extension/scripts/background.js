@@ -34,5 +34,14 @@ chrome.runtime.onConnect.addListener(async (port) => {
       const id = await chrome.storage.local.get("anzenId");
       port.postMessage({ type: "INIT", msg: id });
     }
+    if (msg.type === "DECRYPT") {
+      try {
+        const { anzenKey } = await chrome.storage.local.get("anzenKey");
+        port.postMessage({ type: "DECRYPT", value: msg.value, key: anzenKey });
+      } catch (err) {
+        console.log(err);
+        port.postMessage({ type: "DECRYPT", value: "", key: false });
+      }
+    }
   });
 });
