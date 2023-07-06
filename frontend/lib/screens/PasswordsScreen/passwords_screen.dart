@@ -7,10 +7,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:frontend/constants/app_colors.dart';
 import 'package:frontend/services/api/password_service.dart';
+import 'package:frontend/services/signalr/transport_hub.dart';
 import 'package:frontend/services/storage/secure_storage.dart';
 import 'package:frontend/widgets/typography/content.dart';
 import 'package:get/get.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:signalr_netcore/hub_connection.dart';
 import '../../models/api/v1/PasswordService/password_label_model.dart';
 
 class _AZItem extends ISuspensionBean {
@@ -43,6 +45,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
   List<_AZItem> passwords = [];
   bool isUpdating = false;
   final requester = Get.arguments;
+  HubConnection? hub;
 
   void _getPasswords() async {
     setState(() {
@@ -74,8 +77,16 @@ class _PasswordScreenState extends State<PasswordScreen> {
     }
   }
 
+  void _initHub() async {
+    HubConnection hub = await TransportHub().start();
+    setState(() {
+      this.hub = hub;
+    });
+  }
+
   @override
   void initState() {
+    _initHub();
     _getPasswords();
     super.initState();
   }
@@ -232,7 +243,13 @@ class _PasswordScreenState extends State<PasswordScreen> {
       }
       var cypher =
           await RSA.encryptOAEP(password, "", Hash.SHA256, Get.arguments[2]);
-      //TODO: send with signalr
+
+      hub!.invoke("GetCypherValue", args: [Get.arguments[1], cypher]);
+      Get.snackbar(
+        "Success",
+        "Password send to device over secure channel",
+        backgroundColor: Colors.white,
+      );
     } else {
       Get.snackbar(
         "Error",
@@ -240,6 +257,12 @@ class _PasswordScreenState extends State<PasswordScreen> {
         backgroundColor: Colors.white,
       );
     }
+  }
+
+  @override
+  void dispose() {
+    TransportHub().stop();
+    super.dispose();
   }
 
   @override
